@@ -1,0 +1,3 @@
+[submodule "foxtrot/vendor/spdlog"]
+	path = foxtrot/vendor/spdlog
+	url = https://github.com/gabime/spdlog
