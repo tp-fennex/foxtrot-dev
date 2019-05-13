@@ -29,20 +29,14 @@ file(GLOB ENGINE_SOURCE
     "${ENGINE_PATH}/include/foxtrot/*.hpp"
     "${ENGINE_PATH}/src/*.cpp"
 
-    "${ENGINE_PATH}/include/foxtrot/Application/*.hpp"
-    "${ENGINE_PATH}/src/Application/*.cpp"
-
     "${ENGINE_PATH}/include/foxtrot/Event/*.hpp"
     "${ENGINE_PATH}/src/Event/*.cpp"
 
-    "${ENGINE_PATH}/include/foxtrot/Window/*.hpp"
-    "${ENGINE_PATH}/src/Window/*.cpp"
+    "${ENGINE_PATH}/include/foxtrot/Event/proto/*.pb.h"
+    "${ENGINE_PATH}/include/foxtrot/Event/proto/*.pb.cc"
 
-    "${ENGINE_PATH}/include/foxtrot/ECSEngine/*.hpp"
-    "${ENGINE_PATH}/src/ECSEngine/*.cpp"
-
-    "${ENGINE_PATH}/include/foxtrot/ECSEngine/utility/*.hpp"
-    "${ENGINE_PATH}/src/ECSEngine/utility/*.cpp"
+    "${ENGINE_PATH}/include/foxtrot/Event/workers/*.hpp"
+    "${ENGINE_PATH}/src/Event/workers/*.cpp"
     )
 if(ENGINE_SOURCE)
 	message("-- Found engine at ${ENGINE_PATH}")
@@ -80,6 +74,19 @@ include_directories(${SFML_INCLUDE_DIR})
 
 
 
+find_package(Protobuf REQUIRED)
+include_directories(${Protobuf_INCLUDE_DIRS})
+
+
+
+find_package(Boost COMPONENTS thread system REQUIRED)
+include_directories(${Boost_INCLUDE_DIRS})
+
+
 add_executable(${EXECUTABLE_NAME} ${ENGINE_SOURCE} ${GAME_SOURCE})
 
+
 target_link_libraries(${EXECUTABLE_NAME} ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
+target_link_libraries(${EXECUTABLE_NAME} ${Protobuf_LIBRARIES})
+target_link_libraries(${EXECUTABLE_NAME} ${Boost_LIBRARIES})
+target_link_libraries(${EXECUTABLE_NAME} boost_thread)

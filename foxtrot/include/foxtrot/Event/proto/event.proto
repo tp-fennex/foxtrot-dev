@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+message ProtoEvent {
+    enum event_type {
+        TEST_1_EVENT = 0;
+        TEST_2_EVENT = 1;
+    }
+
+    message Test1Event {
+        int32 message = 3;
+    }
+
+    message Test2Event {
+        float x = 4;
+        float y = 5;
+    }
+
+    event_type type = 1;
+    Test1Event test1 = 2;
+    Test2Event test2 = 3;
+}
