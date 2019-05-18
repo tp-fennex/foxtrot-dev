@@ -2,4 +2,8 @@
 .idea/
 
 # Build folder
+cmake-build-debug/
 build/
+
+# Protobuf compiled files
+*.pb.*
