@@ -26,7 +26,6 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
-#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 
@@ -36,202 +35,8 @@ void protobuf_AssignDesc_event_2eproto();
 void protobuf_ShutdownFile_event_2eproto();
 
 class ProtoEvent;
-class ProtoEvent_Test1Event;
-class ProtoEvent_Test2Event;
 
-enum ProtoEvent_event_type {
-  ProtoEvent_event_type_TEST_1_EVENT = 0,
-  ProtoEvent_event_type_TEST_2_EVENT = 1,
-  ProtoEvent_event_type_ProtoEvent_event_type_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
-  ProtoEvent_event_type_ProtoEvent_event_type_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
-};
-bool ProtoEvent_event_type_IsValid(int value);
-const ProtoEvent_event_type ProtoEvent_event_type_event_type_MIN = ProtoEvent_event_type_TEST_1_EVENT;
-const ProtoEvent_event_type ProtoEvent_event_type_event_type_MAX = ProtoEvent_event_type_TEST_2_EVENT;
-const int ProtoEvent_event_type_event_type_ARRAYSIZE = ProtoEvent_event_type_event_type_MAX + 1;
-
-const ::google::protobuf::EnumDescriptor* ProtoEvent_event_type_descriptor();
-inline const ::std::string& ProtoEvent_event_type_Name(ProtoEvent_event_type value) {
-  return ::google::protobuf::internal::NameOfEnum(
-    ProtoEvent_event_type_descriptor(), value);
-}
-inline bool ProtoEvent_event_type_Parse(
-    const ::std::string& name, ProtoEvent_event_type* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<ProtoEvent_event_type>(
-    ProtoEvent_event_type_descriptor(), name, value);
-}
 // ===================================================================
-
-class ProtoEvent_Test1Event : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:ProtoEvent.Test1Event) */ {
- public:
-  ProtoEvent_Test1Event();
-  virtual ~ProtoEvent_Test1Event();
-
-  ProtoEvent_Test1Event(const ProtoEvent_Test1Event& from);
-
-  inline ProtoEvent_Test1Event& operator=(const ProtoEvent_Test1Event& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const ProtoEvent_Test1Event& default_instance();
-
-  void Swap(ProtoEvent_Test1Event* other);
-
-  // implements Message ----------------------------------------------
-
-  inline ProtoEvent_Test1Event* New() const { return New(NULL); }
-
-  ProtoEvent_Test1Event* New(::google::protobuf::Arena* arena) const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const ProtoEvent_Test1Event& from);
-  void MergeFrom(const ProtoEvent_Test1Event& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
-    return InternalSerializeWithCachedSizesToArray(false, output);
-  }
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  void InternalSwap(ProtoEvent_Test1Event* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
-  }
-  inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // optional int32 message = 3;
-  void clear_message();
-  static const int kMessageFieldNumber = 3;
-  ::google::protobuf::int32 message() const;
-  void set_message(::google::protobuf::int32 value);
-
-  // @@protoc_insertion_point(class_scope:ProtoEvent.Test1Event)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  bool _is_default_instance_;
-  ::google::protobuf::int32 message_;
-  mutable int _cached_size_;
-  friend void  protobuf_AddDesc_event_2eproto();
-  friend void protobuf_AssignDesc_event_2eproto();
-  friend void protobuf_ShutdownFile_event_2eproto();
-
-  void InitAsDefaultInstance();
-  static ProtoEvent_Test1Event* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class ProtoEvent_Test2Event : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:ProtoEvent.Test2Event) */ {
- public:
-  ProtoEvent_Test2Event();
-  virtual ~ProtoEvent_Test2Event();
-
-  ProtoEvent_Test2Event(const ProtoEvent_Test2Event& from);
-
-  inline ProtoEvent_Test2Event& operator=(const ProtoEvent_Test2Event& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const ProtoEvent_Test2Event& default_instance();
-
-  void Swap(ProtoEvent_Test2Event* other);
-
-  // implements Message ----------------------------------------------
-
-  inline ProtoEvent_Test2Event* New() const { return New(NULL); }
-
-  ProtoEvent_Test2Event* New(::google::protobuf::Arena* arena) const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const ProtoEvent_Test2Event& from);
-  void MergeFrom(const ProtoEvent_Test2Event& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
-    return InternalSerializeWithCachedSizesToArray(false, output);
-  }
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  void InternalSwap(ProtoEvent_Test2Event* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
-  }
-  inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // optional float x = 4;
-  void clear_x();
-  static const int kXFieldNumber = 4;
-  float x() const;
-  void set_x(float value);
-
-  // optional float y = 5;
-  void clear_y();
-  static const int kYFieldNumber = 5;
-  float y() const;
-  void set_y(float value);
-
-  // @@protoc_insertion_point(class_scope:ProtoEvent.Test2Event)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  bool _is_default_instance_;
-  float x_;
-  float y_;
-  mutable int _cached_size_;
-  friend void  protobuf_AddDesc_event_2eproto();
-  friend void protobuf_AssignDesc_event_2eproto();
-  friend void protobuf_ShutdownFile_event_2eproto();
-
-  void InitAsDefaultInstance();
-  static ProtoEvent_Test2Event* default_instance_;
-};
-// -------------------------------------------------------------------
 
 class ProtoEvent : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:ProtoEvent) */ {
  public:
@@ -291,69 +96,65 @@ class ProtoEvent : public ::google::protobuf::Message /* @@protoc_insertion_poin
 
   // nested types ----------------------------------------------------
 
-  typedef ProtoEvent_Test1Event Test1Event;
-  typedef ProtoEvent_Test2Event Test2Event;
-
-  typedef ProtoEvent_event_type event_type;
-  static const event_type TEST_1_EVENT =
-    ProtoEvent_event_type_TEST_1_EVENT;
-  static const event_type TEST_2_EVENT =
-    ProtoEvent_event_type_TEST_2_EVENT;
-  static inline bool event_type_IsValid(int value) {
-    return ProtoEvent_event_type_IsValid(value);
-  }
-  static const event_type event_type_MIN =
-    ProtoEvent_event_type_event_type_MIN;
-  static const event_type event_type_MAX =
-    ProtoEvent_event_type_event_type_MAX;
-  static const int event_type_ARRAYSIZE =
-    ProtoEvent_event_type_event_type_ARRAYSIZE;
-  static inline const ::google::protobuf::EnumDescriptor*
-  event_type_descriptor() {
-    return ProtoEvent_event_type_descriptor();
-  }
-  static inline const ::std::string& event_type_Name(event_type value) {
-    return ProtoEvent_event_type_Name(value);
-  }
-  static inline bool event_type_Parse(const ::std::string& name,
-      event_type* value) {
-    return ProtoEvent_event_type_Parse(name, value);
-  }
-
   // accessors -------------------------------------------------------
 
-  // optional .ProtoEvent.event_type type = 1;
+  // optional int32 type = 1;
   void clear_type();
   static const int kTypeFieldNumber = 1;
-  ::ProtoEvent_event_type type() const;
-  void set_type(::ProtoEvent_event_type value);
+  ::google::protobuf::int32 type() const;
+  void set_type(::google::protobuf::int32 value);
 
-  // optional .ProtoEvent.Test1Event test1 = 2;
-  bool has_test1() const;
-  void clear_test1();
-  static const int kTest1FieldNumber = 2;
-  const ::ProtoEvent_Test1Event& test1() const;
-  ::ProtoEvent_Test1Event* mutable_test1();
-  ::ProtoEvent_Test1Event* release_test1();
-  void set_allocated_test1(::ProtoEvent_Test1Event* test1);
+  // repeated int32 int_field = 2;
+  int int_field_size() const;
+  void clear_int_field();
+  static const int kIntFieldFieldNumber = 2;
+  ::google::protobuf::int32 int_field(int index) const;
+  void set_int_field(int index, ::google::protobuf::int32 value);
+  void add_int_field(::google::protobuf::int32 value);
+  const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+      int_field() const;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+      mutable_int_field();
 
-  // optional .ProtoEvent.Test2Event test2 = 3;
-  bool has_test2() const;
-  void clear_test2();
-  static const int kTest2FieldNumber = 3;
-  const ::ProtoEvent_Test2Event& test2() const;
-  ::ProtoEvent_Test2Event* mutable_test2();
-  ::ProtoEvent_Test2Event* release_test2();
-  void set_allocated_test2(::ProtoEvent_Test2Event* test2);
+  // repeated uint32 uint_field = 3;
+  int uint_field_size() const;
+  void clear_uint_field();
+  static const int kUintFieldFieldNumber = 3;
+  ::google::protobuf::uint32 uint_field(int index) const;
+  void set_uint_field(int index, ::google::protobuf::uint32 value);
+  void add_uint_field(::google::protobuf::uint32 value);
+  const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
+      uint_field() const;
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
+      mutable_uint_field();
+
+  // repeated string string_field = 4;
+  int string_field_size() const;
+  void clear_string_field();
+  static const int kStringFieldFieldNumber = 4;
+  const ::std::string& string_field(int index) const;
+  ::std::string* mutable_string_field(int index);
+  void set_string_field(int index, const ::std::string& value);
+  void set_string_field(int index, const char* value);
+  void set_string_field(int index, const char* value, size_t size);
+  ::std::string* add_string_field();
+  void add_string_field(const ::std::string& value);
+  void add_string_field(const char* value);
+  void add_string_field(const char* value, size_t size);
+  const ::google::protobuf::RepeatedPtrField< ::std::string>& string_field() const;
+  ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_string_field();
 
   // @@protoc_insertion_point(class_scope:ProtoEvent)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
-  ::ProtoEvent_Test1Event* test1_;
-  ::ProtoEvent_Test2Event* test2_;
-  int type_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 > int_field_;
+  mutable int _int_field_cached_byte_size_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint32 > uint_field_;
+  mutable int _uint_field_cached_byte_size_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> string_field_;
+  ::google::protobuf::int32 type_;
   mutable int _cached_size_;
   friend void  protobuf_AddDesc_event_2eproto();
   friend void protobuf_AssignDesc_event_2eproto();
@@ -368,169 +169,140 @@ class ProtoEvent : public ::google::protobuf::Message /* @@protoc_insertion_poin
 // ===================================================================
 
 #if !PROTOBUF_INLINE_NOT_IN_HEADERS
-// ProtoEvent_Test1Event
-
-// optional int32 message = 3;
-inline void ProtoEvent_Test1Event::clear_message() {
-  message_ = 0;
-}
-inline ::google::protobuf::int32 ProtoEvent_Test1Event::message() const {
-  // @@protoc_insertion_point(field_get:ProtoEvent.Test1Event.message)
-  return message_;
-}
-inline void ProtoEvent_Test1Event::set_message(::google::protobuf::int32 value) {
-
-  message_ = value;
-  // @@protoc_insertion_point(field_set:ProtoEvent.Test1Event.message)
-}
-
-// -------------------------------------------------------------------
-
-// ProtoEvent_Test2Event
-
-// optional float x = 4;
-inline void ProtoEvent_Test2Event::clear_x() {
-  x_ = 0;
-}
-inline float ProtoEvent_Test2Event::x() const {
-  // @@protoc_insertion_point(field_get:ProtoEvent.Test2Event.x)
-  return x_;
-}
-inline void ProtoEvent_Test2Event::set_x(float value) {
-
-  x_ = value;
-  // @@protoc_insertion_point(field_set:ProtoEvent.Test2Event.x)
-}
-
-// optional float y = 5;
-inline void ProtoEvent_Test2Event::clear_y() {
-  y_ = 0;
-}
-inline float ProtoEvent_Test2Event::y() const {
-  // @@protoc_insertion_point(field_get:ProtoEvent.Test2Event.y)
-  return y_;
-}
-inline void ProtoEvent_Test2Event::set_y(float value) {
-
-  y_ = value;
-  // @@protoc_insertion_point(field_set:ProtoEvent.Test2Event.y)
-}
-
-// -------------------------------------------------------------------
-
 // ProtoEvent
 
-// optional .ProtoEvent.event_type type = 1;
+// optional int32 type = 1;
 inline void ProtoEvent::clear_type() {
   type_ = 0;
 }
-inline ::ProtoEvent_event_type ProtoEvent::type() const {
+inline ::google::protobuf::int32 ProtoEvent::type() const {
   // @@protoc_insertion_point(field_get:ProtoEvent.type)
-  return static_cast< ::ProtoEvent_event_type >(type_);
+  return type_;
 }
-inline void ProtoEvent::set_type(::ProtoEvent_event_type value) {
-
+inline void ProtoEvent::set_type(::google::protobuf::int32 value) {
+  
   type_ = value;
   // @@protoc_insertion_point(field_set:ProtoEvent.type)
 }
 
-// optional .ProtoEvent.Test1Event test1 = 2;
-inline bool ProtoEvent::has_test1() const {
-  return !_is_default_instance_ && test1_ != NULL;
+// repeated int32 int_field = 2;
+inline int ProtoEvent::int_field_size() const {
+  return int_field_.size();
 }
-inline void ProtoEvent::clear_test1() {
-  if (GetArenaNoVirtual() == NULL && test1_ != NULL) delete test1_;
-  test1_ = NULL;
+inline void ProtoEvent::clear_int_field() {
+  int_field_.Clear();
 }
-inline const ::ProtoEvent_Test1Event& ProtoEvent::test1() const {
-  // @@protoc_insertion_point(field_get:ProtoEvent.test1)
-  return test1_ != NULL ? *test1_ : *default_instance_->test1_;
+inline ::google::protobuf::int32 ProtoEvent::int_field(int index) const {
+  // @@protoc_insertion_point(field_get:ProtoEvent.int_field)
+  return int_field_.Get(index);
 }
-inline ::ProtoEvent_Test1Event* ProtoEvent::mutable_test1() {
-
-  if (test1_ == NULL) {
-    test1_ = new ::ProtoEvent_Test1Event;
-  }
-  // @@protoc_insertion_point(field_mutable:ProtoEvent.test1)
-  return test1_;
+inline void ProtoEvent::set_int_field(int index, ::google::protobuf::int32 value) {
+  int_field_.Set(index, value);
+  // @@protoc_insertion_point(field_set:ProtoEvent.int_field)
 }
-inline ::ProtoEvent_Test1Event* ProtoEvent::release_test1() {
-  // @@protoc_insertion_point(field_release:ProtoEvent.test1)
-
-  ::ProtoEvent_Test1Event* temp = test1_;
-  test1_ = NULL;
-  return temp;
+inline void ProtoEvent::add_int_field(::google::protobuf::int32 value) {
+  int_field_.Add(value);
+  // @@protoc_insertion_point(field_add:ProtoEvent.int_field)
 }
-inline void ProtoEvent::set_allocated_test1(::ProtoEvent_Test1Event* test1) {
-  delete test1_;
-  test1_ = test1;
-  if (test1) {
-
-  } else {
-
-  }
-  // @@protoc_insertion_point(field_set_allocated:ProtoEvent.test1)
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+ProtoEvent::int_field() const {
+  // @@protoc_insertion_point(field_list:ProtoEvent.int_field)
+  return int_field_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+ProtoEvent::mutable_int_field() {
+  // @@protoc_insertion_point(field_mutable_list:ProtoEvent.int_field)
+  return &int_field_;
 }
 
-// optional .ProtoEvent.Test2Event test2 = 3;
-inline bool ProtoEvent::has_test2() const {
-  return !_is_default_instance_ && test2_ != NULL;
+// repeated uint32 uint_field = 3;
+inline int ProtoEvent::uint_field_size() const {
+  return uint_field_.size();
 }
-inline void ProtoEvent::clear_test2() {
-  if (GetArenaNoVirtual() == NULL && test2_ != NULL) delete test2_;
-  test2_ = NULL;
+inline void ProtoEvent::clear_uint_field() {
+  uint_field_.Clear();
 }
-inline const ::ProtoEvent_Test2Event& ProtoEvent::test2() const {
-  // @@protoc_insertion_point(field_get:ProtoEvent.test2)
-  return test2_ != NULL ? *test2_ : *default_instance_->test2_;
+inline ::google::protobuf::uint32 ProtoEvent::uint_field(int index) const {
+  // @@protoc_insertion_point(field_get:ProtoEvent.uint_field)
+  return uint_field_.Get(index);
 }
-inline ::ProtoEvent_Test2Event* ProtoEvent::mutable_test2() {
+inline void ProtoEvent::set_uint_field(int index, ::google::protobuf::uint32 value) {
+  uint_field_.Set(index, value);
+  // @@protoc_insertion_point(field_set:ProtoEvent.uint_field)
+}
+inline void ProtoEvent::add_uint_field(::google::protobuf::uint32 value) {
+  uint_field_.Add(value);
+  // @@protoc_insertion_point(field_add:ProtoEvent.uint_field)
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
+ProtoEvent::uint_field() const {
+  // @@protoc_insertion_point(field_list:ProtoEvent.uint_field)
+  return uint_field_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
+ProtoEvent::mutable_uint_field() {
+  // @@protoc_insertion_point(field_mutable_list:ProtoEvent.uint_field)
+  return &uint_field_;
+}
 
-  if (test2_ == NULL) {
-    test2_ = new ::ProtoEvent_Test2Event;
-  }
-  // @@protoc_insertion_point(field_mutable:ProtoEvent.test2)
-  return test2_;
+// repeated string string_field = 4;
+inline int ProtoEvent::string_field_size() const {
+  return string_field_.size();
 }
-inline ::ProtoEvent_Test2Event* ProtoEvent::release_test2() {
-  // @@protoc_insertion_point(field_release:ProtoEvent.test2)
-
-  ::ProtoEvent_Test2Event* temp = test2_;
-  test2_ = NULL;
-  return temp;
+inline void ProtoEvent::clear_string_field() {
+  string_field_.Clear();
 }
-inline void ProtoEvent::set_allocated_test2(::ProtoEvent_Test2Event* test2) {
-  delete test2_;
-  test2_ = test2;
-  if (test2) {
-
-  } else {
-
-  }
-  // @@protoc_insertion_point(field_set_allocated:ProtoEvent.test2)
+inline const ::std::string& ProtoEvent::string_field(int index) const {
+  // @@protoc_insertion_point(field_get:ProtoEvent.string_field)
+  return string_field_.Get(index);
+}
+inline ::std::string* ProtoEvent::mutable_string_field(int index) {
+  // @@protoc_insertion_point(field_mutable:ProtoEvent.string_field)
+  return string_field_.Mutable(index);
+}
+inline void ProtoEvent::set_string_field(int index, const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:ProtoEvent.string_field)
+  string_field_.Mutable(index)->assign(value);
+}
+inline void ProtoEvent::set_string_field(int index, const char* value) {
+  string_field_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:ProtoEvent.string_field)
+}
+inline void ProtoEvent::set_string_field(int index, const char* value, size_t size) {
+  string_field_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:ProtoEvent.string_field)
+}
+inline ::std::string* ProtoEvent::add_string_field() {
+  // @@protoc_insertion_point(field_add_mutable:ProtoEvent.string_field)
+  return string_field_.Add();
+}
+inline void ProtoEvent::add_string_field(const ::std::string& value) {
+  string_field_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:ProtoEvent.string_field)
+}
+inline void ProtoEvent::add_string_field(const char* value) {
+  string_field_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:ProtoEvent.string_field)
+}
+inline void ProtoEvent::add_string_field(const char* value, size_t size) {
+  string_field_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:ProtoEvent.string_field)
+}
+inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
+ProtoEvent::string_field() const {
+  // @@protoc_insertion_point(field_list:ProtoEvent.string_field)
+  return string_field_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::std::string>*
+ProtoEvent::mutable_string_field() {
+  // @@protoc_insertion_point(field_mutable_list:ProtoEvent.string_field)
+  return &string_field_;
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
 
 // @@protoc_insertion_point(namespace_scope)
-
-#ifndef SWIG
-namespace google {
-namespace protobuf {
-
-template <> struct is_proto_enum< ::ProtoEvent_event_type> : ::google::protobuf::internal::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::ProtoEvent_event_type>() {
-  return ::ProtoEvent_event_type_descriptor();
-}
-
-}  // namespace protobuf
-}  // namespace google
-#endif  // SWIG
 
 // @@protoc_insertion_point(global_scope)
 

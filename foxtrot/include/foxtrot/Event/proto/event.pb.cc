@@ -22,13 +22,6 @@ namespace {
 const ::google::protobuf::Descriptor* ProtoEvent_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   ProtoEvent_reflection_ = NULL;
-const ::google::protobuf::Descriptor* ProtoEvent_Test1Event_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  ProtoEvent_Test1Event_reflection_ = NULL;
-const ::google::protobuf::Descriptor* ProtoEvent_Test2Event_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  ProtoEvent_Test2Event_reflection_ = NULL;
-const ::google::protobuf::EnumDescriptor* ProtoEvent_event_type_descriptor_ = NULL;
 
 }  // namespace
 
@@ -41,10 +34,11 @@ void protobuf_AssignDesc_event_2eproto() {
       "event.proto");
   GOOGLE_CHECK(file != NULL);
   ProtoEvent_descriptor_ = file->message_type(0);
-  static const int ProtoEvent_offsets_[3] = {
+  static const int ProtoEvent_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ProtoEvent, type_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ProtoEvent, test1_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ProtoEvent, test2_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ProtoEvent, int_field_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ProtoEvent, uint_field_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ProtoEvent, string_field_),
   };
   ProtoEvent_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
@@ -57,38 +51,6 @@ void protobuf_AssignDesc_event_2eproto() {
       sizeof(ProtoEvent),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ProtoEvent, _internal_metadata_),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ProtoEvent, _is_default_instance_));
-  ProtoEvent_Test1Event_descriptor_ = ProtoEvent_descriptor_->nested_type(0);
-  static const int ProtoEvent_Test1Event_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ProtoEvent_Test1Event, message_),
-  };
-  ProtoEvent_Test1Event_reflection_ =
-    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
-      ProtoEvent_Test1Event_descriptor_,
-      ProtoEvent_Test1Event::default_instance_,
-      ProtoEvent_Test1Event_offsets_,
-      -1,
-      -1,
-      -1,
-      sizeof(ProtoEvent_Test1Event),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ProtoEvent_Test1Event, _internal_metadata_),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ProtoEvent_Test1Event, _is_default_instance_));
-  ProtoEvent_Test2Event_descriptor_ = ProtoEvent_descriptor_->nested_type(1);
-  static const int ProtoEvent_Test2Event_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ProtoEvent_Test2Event, x_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ProtoEvent_Test2Event, y_),
-  };
-  ProtoEvent_Test2Event_reflection_ =
-    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
-      ProtoEvent_Test2Event_descriptor_,
-      ProtoEvent_Test2Event::default_instance_,
-      ProtoEvent_Test2Event_offsets_,
-      -1,
-      -1,
-      -1,
-      sizeof(ProtoEvent_Test2Event),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ProtoEvent_Test2Event, _internal_metadata_),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ProtoEvent_Test2Event, _is_default_instance_));
-  ProtoEvent_event_type_descriptor_ = ProtoEvent_descriptor_->enum_type(0);
 }
 
 namespace {
@@ -104,10 +66,6 @@ void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       ProtoEvent_descriptor_, &ProtoEvent::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-      ProtoEvent_Test1Event_descriptor_, &ProtoEvent_Test1Event::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-      ProtoEvent_Test2Event_descriptor_, &ProtoEvent_Test2Event::default_instance());
 }
 
 }  // namespace
@@ -115,10 +73,6 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void protobuf_ShutdownFile_event_2eproto() {
   delete ProtoEvent::default_instance_;
   delete ProtoEvent_reflection_;
-  delete ProtoEvent_Test1Event::default_instance_;
-  delete ProtoEvent_Test1Event_reflection_;
-  delete ProtoEvent_Test2Event::default_instance_;
-  delete ProtoEvent_Test2Event_reflection_;
 }
 
 void protobuf_AddDesc_event_2eproto() GOOGLE_ATTRIBUTE_COLD;
@@ -129,21 +83,13 @@ void protobuf_AddDesc_event_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\013event.proto\"\365\001\n\nProtoEvent\022$\n\004type\030\001 \001"
-    "(\0162\026.ProtoEvent.event_type\022%\n\005test1\030\002 \001("
-    "\0132\026.ProtoEvent.Test1Event\022%\n\005test2\030\003 \001(\013"
-    "2\026.ProtoEvent.Test2Event\032\035\n\nTest1Event\022\017"
-    "\n\007message\030\003 \001(\005\032\"\n\nTest2Event\022\t\n\001x\030\004 \001(\002"
-    "\022\t\n\001y\030\005 \001(\002\"0\n\nevent_type\022\020\n\014TEST_1_EVEN"
-    "T\020\000\022\020\n\014TEST_2_EVENT\020\001b\006proto3", 269);
+    "\n\013event.proto\"W\n\nProtoEvent\022\014\n\004type\030\001 \001("
+    "\005\022\021\n\tint_field\030\002 \003(\005\022\022\n\nuint_field\030\003 \003(\r"
+    "\022\024\n\014string_field\030\004 \003(\tb\006proto3", 110);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "event.proto", &protobuf_RegisterTypes);
   ProtoEvent::default_instance_ = new ProtoEvent();
-  ProtoEvent_Test1Event::default_instance_ = new ProtoEvent_Test1Event();
-  ProtoEvent_Test2Event::default_instance_ = new ProtoEvent_Test2Event();
   ProtoEvent::default_instance_->InitAsDefaultInstance();
-  ProtoEvent_Test1Event::default_instance_->InitAsDefaultInstance();
-  ProtoEvent_Test2Event::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_event_2eproto);
 }
 
@@ -156,525 +102,11 @@ struct StaticDescriptorInitializer_event_2eproto {
 
 // ===================================================================
 
-const ::google::protobuf::EnumDescriptor* ProtoEvent_event_type_descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return ProtoEvent_event_type_descriptor_;
-}
-bool ProtoEvent_event_type_IsValid(int value) {
-  switch(value) {
-    case 0:
-    case 1:
-      return true;
-    default:
-      return false;
-  }
-}
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const ProtoEvent_event_type ProtoEvent::TEST_1_EVENT;
-const ProtoEvent_event_type ProtoEvent::TEST_2_EVENT;
-const ProtoEvent_event_type ProtoEvent::event_type_MIN;
-const ProtoEvent_event_type ProtoEvent::event_type_MAX;
-const int ProtoEvent::event_type_ARRAYSIZE;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int ProtoEvent_Test1Event::kMessageFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-ProtoEvent_Test1Event::ProtoEvent_Test1Event()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:ProtoEvent.Test1Event)
-}
-
-void ProtoEvent_Test1Event::InitAsDefaultInstance() {
-  _is_default_instance_ = true;
-}
-
-ProtoEvent_Test1Event::ProtoEvent_Test1Event(const ProtoEvent_Test1Event& from)
-  : ::google::protobuf::Message(),
-    _internal_metadata_(NULL) {
-  SharedCtor();
-  MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:ProtoEvent.Test1Event)
-}
-
-void ProtoEvent_Test1Event::SharedCtor() {
-    _is_default_instance_ = false;
-  _cached_size_ = 0;
-  message_ = 0;
-}
-
-ProtoEvent_Test1Event::~ProtoEvent_Test1Event() {
-  // @@protoc_insertion_point(destructor:ProtoEvent.Test1Event)
-  SharedDtor();
-}
-
-void ProtoEvent_Test1Event::SharedDtor() {
-  if (this != default_instance_) {
-  }
-}
-
-void ProtoEvent_Test1Event::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* ProtoEvent_Test1Event::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return ProtoEvent_Test1Event_descriptor_;
-}
-
-const ProtoEvent_Test1Event& ProtoEvent_Test1Event::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_event_2eproto();
-  return *default_instance_;
-}
-
-ProtoEvent_Test1Event* ProtoEvent_Test1Event::default_instance_ = NULL;
-
-ProtoEvent_Test1Event* ProtoEvent_Test1Event::New(::google::protobuf::Arena* arena) const {
-  ProtoEvent_Test1Event* n = new ProtoEvent_Test1Event;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
-
-void ProtoEvent_Test1Event::Clear() {
-// @@protoc_insertion_point(message_clear_start:ProtoEvent.Test1Event)
-  message_ = 0;
-}
-
-bool ProtoEvent_Test1Event::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:ProtoEvent.Test1Event)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional int32 message = 3;
-      case 3: {
-        if (tag == 24) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &message_)));
-
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectAtEnd()) goto success;
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0 ||
-            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:ProtoEvent.Test1Event)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:ProtoEvent.Test1Event)
-  return false;
-#undef DO_
-}
-
-void ProtoEvent_Test1Event::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:ProtoEvent.Test1Event)
-  // optional int32 message = 3;
-  if (this->message() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->message(), output);
-  }
-
-  // @@protoc_insertion_point(serialize_end:ProtoEvent.Test1Event)
-}
-
-::google::protobuf::uint8* ProtoEvent_Test1Event::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:ProtoEvent.Test1Event)
-  // optional int32 message = 3;
-  if (this->message() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->message(), target);
-  }
-
-  // @@protoc_insertion_point(serialize_to_array_end:ProtoEvent.Test1Event)
-  return target;
-}
-
-int ProtoEvent_Test1Event::ByteSize() const {
-// @@protoc_insertion_point(message_byte_size_start:ProtoEvent.Test1Event)
-  int total_size = 0;
-
-  // optional int32 message = 3;
-  if (this->message() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->message());
-  }
-
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void ProtoEvent_Test1Event::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:ProtoEvent.Test1Event)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) {
-    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
-  }
-  const ProtoEvent_Test1Event* source = 
-      ::google::protobuf::internal::DynamicCastToGenerated<const ProtoEvent_Test1Event>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:ProtoEvent.Test1Event)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:ProtoEvent.Test1Event)
-    MergeFrom(*source);
-  }
-}
-
-void ProtoEvent_Test1Event::MergeFrom(const ProtoEvent_Test1Event& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:ProtoEvent.Test1Event)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) {
-    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
-  }
-  if (from.message() != 0) {
-    set_message(from.message());
-  }
-}
-
-void ProtoEvent_Test1Event::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:ProtoEvent.Test1Event)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void ProtoEvent_Test1Event::CopyFrom(const ProtoEvent_Test1Event& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:ProtoEvent.Test1Event)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool ProtoEvent_Test1Event::IsInitialized() const {
-
-  return true;
-}
-
-void ProtoEvent_Test1Event::Swap(ProtoEvent_Test1Event* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void ProtoEvent_Test1Event::InternalSwap(ProtoEvent_Test1Event* other) {
-  std::swap(message_, other->message_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  std::swap(_cached_size_, other->_cached_size_);
-}
-
-::google::protobuf::Metadata ProtoEvent_Test1Event::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = ProtoEvent_Test1Event_descriptor_;
-  metadata.reflection = ProtoEvent_Test1Event_reflection_;
-  return metadata;
-}
-
-
-// -------------------------------------------------------------------
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int ProtoEvent_Test2Event::kXFieldNumber;
-const int ProtoEvent_Test2Event::kYFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-ProtoEvent_Test2Event::ProtoEvent_Test2Event()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:ProtoEvent.Test2Event)
-}
-
-void ProtoEvent_Test2Event::InitAsDefaultInstance() {
-  _is_default_instance_ = true;
-}
-
-ProtoEvent_Test2Event::ProtoEvent_Test2Event(const ProtoEvent_Test2Event& from)
-  : ::google::protobuf::Message(),
-    _internal_metadata_(NULL) {
-  SharedCtor();
-  MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:ProtoEvent.Test2Event)
-}
-
-void ProtoEvent_Test2Event::SharedCtor() {
-    _is_default_instance_ = false;
-  _cached_size_ = 0;
-  x_ = 0;
-  y_ = 0;
-}
-
-ProtoEvent_Test2Event::~ProtoEvent_Test2Event() {
-  // @@protoc_insertion_point(destructor:ProtoEvent.Test2Event)
-  SharedDtor();
-}
-
-void ProtoEvent_Test2Event::SharedDtor() {
-  if (this != default_instance_) {
-  }
-}
-
-void ProtoEvent_Test2Event::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* ProtoEvent_Test2Event::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return ProtoEvent_Test2Event_descriptor_;
-}
-
-const ProtoEvent_Test2Event& ProtoEvent_Test2Event::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_event_2eproto();
-  return *default_instance_;
-}
-
-ProtoEvent_Test2Event* ProtoEvent_Test2Event::default_instance_ = NULL;
-
-ProtoEvent_Test2Event* ProtoEvent_Test2Event::New(::google::protobuf::Arena* arena) const {
-  ProtoEvent_Test2Event* n = new ProtoEvent_Test2Event;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
-
-void ProtoEvent_Test2Event::Clear() {
-// @@protoc_insertion_point(message_clear_start:ProtoEvent.Test2Event)
-#if defined(__clang__)
-#define ZR_HELPER_(f) \
-  _Pragma("clang diagnostic push") \
-  _Pragma("clang diagnostic ignored \"-Winvalid-offsetof\"") \
-  __builtin_offsetof(ProtoEvent_Test2Event, f) \
-  _Pragma("clang diagnostic pop")
-#else
-#define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<ProtoEvent_Test2Event*>(16)->f)
-#endif
-
-#define ZR_(first, last) do {\
-  ::memset(&first, 0,\
-           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
-} while (0)
-
-  ZR_(x_, y_);
-
-#undef ZR_HELPER_
-#undef ZR_
-
-}
-
-bool ProtoEvent_Test2Event::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:ProtoEvent.Test2Event)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional float x = 4;
-      case 4: {
-        if (tag == 37) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &x_)));
-
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(45)) goto parse_y;
-        break;
-      }
-
-      // optional float y = 5;
-      case 5: {
-        if (tag == 45) {
-         parse_y:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &y_)));
-
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectAtEnd()) goto success;
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0 ||
-            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:ProtoEvent.Test2Event)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:ProtoEvent.Test2Event)
-  return false;
-#undef DO_
-}
-
-void ProtoEvent_Test2Event::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:ProtoEvent.Test2Event)
-  // optional float x = 4;
-  if (this->x() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(4, this->x(), output);
-  }
-
-  // optional float y = 5;
-  if (this->y() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(5, this->y(), output);
-  }
-
-  // @@protoc_insertion_point(serialize_end:ProtoEvent.Test2Event)
-}
-
-::google::protobuf::uint8* ProtoEvent_Test2Event::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:ProtoEvent.Test2Event)
-  // optional float x = 4;
-  if (this->x() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(4, this->x(), target);
-  }
-
-  // optional float y = 5;
-  if (this->y() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(5, this->y(), target);
-  }
-
-  // @@protoc_insertion_point(serialize_to_array_end:ProtoEvent.Test2Event)
-  return target;
-}
-
-int ProtoEvent_Test2Event::ByteSize() const {
-// @@protoc_insertion_point(message_byte_size_start:ProtoEvent.Test2Event)
-  int total_size = 0;
-
-  // optional float x = 4;
-  if (this->x() != 0) {
-    total_size += 1 + 4;
-  }
-
-  // optional float y = 5;
-  if (this->y() != 0) {
-    total_size += 1 + 4;
-  }
-
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void ProtoEvent_Test2Event::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:ProtoEvent.Test2Event)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) {
-    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
-  }
-  const ProtoEvent_Test2Event* source = 
-      ::google::protobuf::internal::DynamicCastToGenerated<const ProtoEvent_Test2Event>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:ProtoEvent.Test2Event)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:ProtoEvent.Test2Event)
-    MergeFrom(*source);
-  }
-}
-
-void ProtoEvent_Test2Event::MergeFrom(const ProtoEvent_Test2Event& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:ProtoEvent.Test2Event)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) {
-    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
-  }
-  if (from.x() != 0) {
-    set_x(from.x());
-  }
-  if (from.y() != 0) {
-    set_y(from.y());
-  }
-}
-
-void ProtoEvent_Test2Event::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:ProtoEvent.Test2Event)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void ProtoEvent_Test2Event::CopyFrom(const ProtoEvent_Test2Event& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:ProtoEvent.Test2Event)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool ProtoEvent_Test2Event::IsInitialized() const {
-
-  return true;
-}
-
-void ProtoEvent_Test2Event::Swap(ProtoEvent_Test2Event* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void ProtoEvent_Test2Event::InternalSwap(ProtoEvent_Test2Event* other) {
-  std::swap(x_, other->x_);
-  std::swap(y_, other->y_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  std::swap(_cached_size_, other->_cached_size_);
-}
-
-::google::protobuf::Metadata ProtoEvent_Test2Event::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = ProtoEvent_Test2Event_descriptor_;
-  metadata.reflection = ProtoEvent_Test2Event_reflection_;
-  return metadata;
-}
-
-
-// -------------------------------------------------------------------
-
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int ProtoEvent::kTypeFieldNumber;
-const int ProtoEvent::kTest1FieldNumber;
-const int ProtoEvent::kTest2FieldNumber;
+const int ProtoEvent::kIntFieldFieldNumber;
+const int ProtoEvent::kUintFieldFieldNumber;
+const int ProtoEvent::kStringFieldFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 ProtoEvent::ProtoEvent()
@@ -685,8 +117,6 @@ ProtoEvent::ProtoEvent()
 
 void ProtoEvent::InitAsDefaultInstance() {
   _is_default_instance_ = true;
-  test1_ = const_cast< ::ProtoEvent_Test1Event*>(&::ProtoEvent_Test1Event::default_instance());
-  test2_ = const_cast< ::ProtoEvent_Test2Event*>(&::ProtoEvent_Test2Event::default_instance());
 }
 
 ProtoEvent::ProtoEvent(const ProtoEvent& from)
@@ -699,10 +129,9 @@ ProtoEvent::ProtoEvent(const ProtoEvent& from)
 
 void ProtoEvent::SharedCtor() {
     _is_default_instance_ = false;
+  ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
   type_ = 0;
-  test1_ = NULL;
-  test2_ = NULL;
 }
 
 ProtoEvent::~ProtoEvent() {
@@ -712,8 +141,6 @@ ProtoEvent::~ProtoEvent() {
 
 void ProtoEvent::SharedDtor() {
   if (this != default_instance_) {
-    delete test1_;
-    delete test2_;
   }
 }
 
@@ -745,10 +172,9 @@ ProtoEvent* ProtoEvent::New(::google::protobuf::Arena* arena) const {
 void ProtoEvent::Clear() {
 // @@protoc_insertion_point(message_clear_start:ProtoEvent)
   type_ = 0;
-  if (GetArenaNoVirtual() == NULL && test1_ != NULL) delete test1_;
-  test1_ = NULL;
-  if (GetArenaNoVirtual() == NULL && test2_ != NULL) delete test2_;
-  test2_ = NULL;
+  int_field_.Clear();
+  uint_field_.Clear();
+  string_field_.Clear();
 }
 
 bool ProtoEvent::MergePartialFromCodedStream(
@@ -761,43 +187,71 @@ bool ProtoEvent::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .ProtoEvent.event_type type = 1;
+      // optional int32 type = 1;
       case 1: {
         if (tag == 8) {
-          int value;
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          set_type(static_cast< ::ProtoEvent_event_type >(value));
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &type_)));
+
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(18)) goto parse_test1;
+        if (input->ExpectTag(18)) goto parse_int_field;
         break;
       }
 
-      // optional .ProtoEvent.Test1Event test1 = 2;
+      // repeated int32 int_field = 2;
       case 2: {
         if (tag == 18) {
-         parse_test1:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_test1()));
+         parse_int_field:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, this->mutable_int_field())));
+        } else if (tag == 16) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 1, 18, input, this->mutable_int_field())));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(26)) goto parse_test2;
+        if (input->ExpectTag(26)) goto parse_uint_field;
         break;
       }
 
-      // optional .ProtoEvent.Test2Event test2 = 3;
+      // repeated uint32 uint_field = 3;
       case 3: {
         if (tag == 26) {
-         parse_test2:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_test2()));
+         parse_uint_field:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, this->mutable_uint_field())));
+        } else if (tag == 24) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 1, 26, input, this->mutable_uint_field())));
         } else {
           goto handle_unusual;
         }
+        if (input->ExpectTag(34)) goto parse_string_field;
+        break;
+      }
+
+      // repeated string string_field = 4;
+      case 4: {
+        if (tag == 34) {
+         parse_string_field:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->add_string_field()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->string_field(this->string_field_size() - 1).data(),
+            this->string_field(this->string_field_size() - 1).length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "ProtoEvent.string_field"));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(34)) goto parse_string_field;
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -826,22 +280,39 @@ failure:
 void ProtoEvent::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:ProtoEvent)
-  // optional .ProtoEvent.event_type type = 1;
+  // optional int32 type = 1;
   if (this->type() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      1, this->type(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->type(), output);
   }
 
-  // optional .ProtoEvent.Test1Event test1 = 2;
-  if (this->has_test1()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, *this->test1_, output);
+  // repeated int32 int_field = 2;
+  if (this->int_field_size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteTag(2, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
+    output->WriteVarint32(_int_field_cached_byte_size_);
+  }
+  for (int i = 0; i < this->int_field_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32NoTag(
+      this->int_field(i), output);
   }
 
-  // optional .ProtoEvent.Test2Event test2 = 3;
-  if (this->has_test2()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, *this->test2_, output);
+  // repeated uint32 uint_field = 3;
+  if (this->uint_field_size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteTag(3, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
+    output->WriteVarint32(_uint_field_cached_byte_size_);
+  }
+  for (int i = 0; i < this->uint_field_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32NoTag(
+      this->uint_field(i), output);
+  }
+
+  // repeated string string_field = 4;
+  for (int i = 0; i < this->string_field_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->string_field(i).data(), this->string_field(i).length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ProtoEvent.string_field");
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      4, this->string_field(i), output);
   }
 
   // @@protoc_insertion_point(serialize_end:ProtoEvent)
@@ -850,24 +321,47 @@ void ProtoEvent::SerializeWithCachedSizes(
 ::google::protobuf::uint8* ProtoEvent::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:ProtoEvent)
-  // optional .ProtoEvent.event_type type = 1;
+  // optional int32 type = 1;
   if (this->type() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      1, this->type(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->type(), target);
   }
 
-  // optional .ProtoEvent.Test1Event test1 = 2;
-  if (this->has_test1()) {
+  // repeated int32 int_field = 2;
+  if (this->int_field_size() > 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
+      2,
+      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
+      target);
+    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
+      _int_field_cached_byte_size_, target);
+  }
+  for (int i = 0; i < this->int_field_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageNoVirtualToArray(
-        2, *this->test1_, false, target);
+      WriteInt32NoTagToArray(this->int_field(i), target);
   }
 
-  // optional .ProtoEvent.Test2Event test2 = 3;
-  if (this->has_test2()) {
+  // repeated uint32 uint_field = 3;
+  if (this->uint_field_size() > 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
+      3,
+      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
+      target);
+    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
+      _uint_field_cached_byte_size_, target);
+  }
+  for (int i = 0; i < this->uint_field_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageNoVirtualToArray(
-        3, *this->test2_, false, target);
+      WriteUInt32NoTagToArray(this->uint_field(i), target);
+  }
+
+  // repeated string string_field = 4;
+  for (int i = 0; i < this->string_field_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->string_field(i).data(), this->string_field(i).length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ProtoEvent.string_field");
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteStringToArray(4, this->string_field(i), target);
   }
 
   // @@protoc_insertion_point(serialize_to_array_end:ProtoEvent)
@@ -878,24 +372,52 @@ int ProtoEvent::ByteSize() const {
 // @@protoc_insertion_point(message_byte_size_start:ProtoEvent)
   int total_size = 0;
 
-  // optional .ProtoEvent.event_type type = 1;
+  // optional int32 type = 1;
   if (this->type() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->type());
   }
 
-  // optional .ProtoEvent.Test1Event test1 = 2;
-  if (this->has_test1()) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        *this->test1_);
+  // repeated int32 int_field = 2;
+  {
+    int data_size = 0;
+    for (int i = 0; i < this->int_field_size(); i++) {
+      data_size += ::google::protobuf::internal::WireFormatLite::
+        Int32Size(this->int_field(i));
+    }
+    if (data_size > 0) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(data_size);
+    }
+    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+    _int_field_cached_byte_size_ = data_size;
+    GOOGLE_SAFE_CONCURRENT_WRITES_END();
+    total_size += data_size;
   }
 
-  // optional .ProtoEvent.Test2Event test2 = 3;
-  if (this->has_test2()) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        *this->test2_);
+  // repeated uint32 uint_field = 3;
+  {
+    int data_size = 0;
+    for (int i = 0; i < this->uint_field_size(); i++) {
+      data_size += ::google::protobuf::internal::WireFormatLite::
+        UInt32Size(this->uint_field(i));
+    }
+    if (data_size > 0) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(data_size);
+    }
+    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+    _uint_field_cached_byte_size_ = data_size;
+    GOOGLE_SAFE_CONCURRENT_WRITES_END();
+    total_size += data_size;
+  }
+
+  // repeated string string_field = 4;
+  total_size += 1 * this->string_field_size();
+  for (int i = 0; i < this->string_field_size(); i++) {
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+      this->string_field(i));
   }
 
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
@@ -926,14 +448,11 @@ void ProtoEvent::MergeFrom(const ProtoEvent& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) {
     ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
   }
+  int_field_.MergeFrom(from.int_field_);
+  uint_field_.MergeFrom(from.uint_field_);
+  string_field_.MergeFrom(from.string_field_);
   if (from.type() != 0) {
     set_type(from.type());
-  }
-  if (from.has_test1()) {
-    mutable_test1()->::ProtoEvent_Test1Event::MergeFrom(from.test1());
-  }
-  if (from.has_test2()) {
-    mutable_test2()->::ProtoEvent_Test2Event::MergeFrom(from.test2());
   }
 }
 
@@ -962,8 +481,9 @@ void ProtoEvent::Swap(ProtoEvent* other) {
 }
 void ProtoEvent::InternalSwap(ProtoEvent* other) {
   std::swap(type_, other->type_);
-  std::swap(test1_, other->test1_);
-  std::swap(test2_, other->test2_);
+  int_field_.UnsafeArenaSwap(&other->int_field_);
+  uint_field_.UnsafeArenaSwap(&other->uint_field_);
+  string_field_.UnsafeArenaSwap(&other->string_field_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
 }
@@ -977,146 +497,135 @@ void ProtoEvent::InternalSwap(ProtoEvent* other) {
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
-// ProtoEvent_Test1Event
-
-// optional int32 message = 3;
-void ProtoEvent_Test1Event::clear_message() {
-  message_ = 0;
-}
- ::google::protobuf::int32 ProtoEvent_Test1Event::message() const {
-  // @@protoc_insertion_point(field_get:ProtoEvent.Test1Event.message)
-  return message_;
-}
- void ProtoEvent_Test1Event::set_message(::google::protobuf::int32 value) {
-  
-  message_ = value;
-  // @@protoc_insertion_point(field_set:ProtoEvent.Test1Event.message)
-}
-
-// -------------------------------------------------------------------
-
-// ProtoEvent_Test2Event
-
-// optional float x = 4;
-void ProtoEvent_Test2Event::clear_x() {
-  x_ = 0;
-}
- float ProtoEvent_Test2Event::x() const {
-  // @@protoc_insertion_point(field_get:ProtoEvent.Test2Event.x)
-  return x_;
-}
- void ProtoEvent_Test2Event::set_x(float value) {
-  
-  x_ = value;
-  // @@protoc_insertion_point(field_set:ProtoEvent.Test2Event.x)
-}
-
-// optional float y = 5;
-void ProtoEvent_Test2Event::clear_y() {
-  y_ = 0;
-}
- float ProtoEvent_Test2Event::y() const {
-  // @@protoc_insertion_point(field_get:ProtoEvent.Test2Event.y)
-  return y_;
-}
- void ProtoEvent_Test2Event::set_y(float value) {
-  
-  y_ = value;
-  // @@protoc_insertion_point(field_set:ProtoEvent.Test2Event.y)
-}
-
-// -------------------------------------------------------------------
-
 // ProtoEvent
 
-// optional .ProtoEvent.event_type type = 1;
+// optional int32 type = 1;
 void ProtoEvent::clear_type() {
   type_ = 0;
 }
- ::ProtoEvent_event_type ProtoEvent::type() const {
+ ::google::protobuf::int32 ProtoEvent::type() const {
   // @@protoc_insertion_point(field_get:ProtoEvent.type)
-  return static_cast< ::ProtoEvent_event_type >(type_);
+  return type_;
 }
- void ProtoEvent::set_type(::ProtoEvent_event_type value) {
+ void ProtoEvent::set_type(::google::protobuf::int32 value) {
   
   type_ = value;
   // @@protoc_insertion_point(field_set:ProtoEvent.type)
 }
 
-// optional .ProtoEvent.Test1Event test1 = 2;
-bool ProtoEvent::has_test1() const {
-  return !_is_default_instance_ && test1_ != NULL;
+// repeated int32 int_field = 2;
+int ProtoEvent::int_field_size() const {
+  return int_field_.size();
 }
-void ProtoEvent::clear_test1() {
-  if (GetArenaNoVirtual() == NULL && test1_ != NULL) delete test1_;
-  test1_ = NULL;
+void ProtoEvent::clear_int_field() {
+  int_field_.Clear();
 }
-const ::ProtoEvent_Test1Event& ProtoEvent::test1() const {
-  // @@protoc_insertion_point(field_get:ProtoEvent.test1)
-  return test1_ != NULL ? *test1_ : *default_instance_->test1_;
+ ::google::protobuf::int32 ProtoEvent::int_field(int index) const {
+  // @@protoc_insertion_point(field_get:ProtoEvent.int_field)
+  return int_field_.Get(index);
 }
-::ProtoEvent_Test1Event* ProtoEvent::mutable_test1() {
-  
-  if (test1_ == NULL) {
-    test1_ = new ::ProtoEvent_Test1Event;
-  }
-  // @@protoc_insertion_point(field_mutable:ProtoEvent.test1)
-  return test1_;
+ void ProtoEvent::set_int_field(int index, ::google::protobuf::int32 value) {
+  int_field_.Set(index, value);
+  // @@protoc_insertion_point(field_set:ProtoEvent.int_field)
 }
-::ProtoEvent_Test1Event* ProtoEvent::release_test1() {
-  // @@protoc_insertion_point(field_release:ProtoEvent.test1)
-  
-  ::ProtoEvent_Test1Event* temp = test1_;
-  test1_ = NULL;
-  return temp;
+ void ProtoEvent::add_int_field(::google::protobuf::int32 value) {
+  int_field_.Add(value);
+  // @@protoc_insertion_point(field_add:ProtoEvent.int_field)
 }
-void ProtoEvent::set_allocated_test1(::ProtoEvent_Test1Event* test1) {
-  delete test1_;
-  test1_ = test1;
-  if (test1) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_set_allocated:ProtoEvent.test1)
+ const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+ProtoEvent::int_field() const {
+  // @@protoc_insertion_point(field_list:ProtoEvent.int_field)
+  return int_field_;
+}
+ ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+ProtoEvent::mutable_int_field() {
+  // @@protoc_insertion_point(field_mutable_list:ProtoEvent.int_field)
+  return &int_field_;
 }
 
-// optional .ProtoEvent.Test2Event test2 = 3;
-bool ProtoEvent::has_test2() const {
-  return !_is_default_instance_ && test2_ != NULL;
+// repeated uint32 uint_field = 3;
+int ProtoEvent::uint_field_size() const {
+  return uint_field_.size();
 }
-void ProtoEvent::clear_test2() {
-  if (GetArenaNoVirtual() == NULL && test2_ != NULL) delete test2_;
-  test2_ = NULL;
+void ProtoEvent::clear_uint_field() {
+  uint_field_.Clear();
 }
-const ::ProtoEvent_Test2Event& ProtoEvent::test2() const {
-  // @@protoc_insertion_point(field_get:ProtoEvent.test2)
-  return test2_ != NULL ? *test2_ : *default_instance_->test2_;
+ ::google::protobuf::uint32 ProtoEvent::uint_field(int index) const {
+  // @@protoc_insertion_point(field_get:ProtoEvent.uint_field)
+  return uint_field_.Get(index);
 }
-::ProtoEvent_Test2Event* ProtoEvent::mutable_test2() {
-  
-  if (test2_ == NULL) {
-    test2_ = new ::ProtoEvent_Test2Event;
-  }
-  // @@protoc_insertion_point(field_mutable:ProtoEvent.test2)
-  return test2_;
+ void ProtoEvent::set_uint_field(int index, ::google::protobuf::uint32 value) {
+  uint_field_.Set(index, value);
+  // @@protoc_insertion_point(field_set:ProtoEvent.uint_field)
 }
-::ProtoEvent_Test2Event* ProtoEvent::release_test2() {
-  // @@protoc_insertion_point(field_release:ProtoEvent.test2)
-  
-  ::ProtoEvent_Test2Event* temp = test2_;
-  test2_ = NULL;
-  return temp;
+ void ProtoEvent::add_uint_field(::google::protobuf::uint32 value) {
+  uint_field_.Add(value);
+  // @@protoc_insertion_point(field_add:ProtoEvent.uint_field)
 }
-void ProtoEvent::set_allocated_test2(::ProtoEvent_Test2Event* test2) {
-  delete test2_;
-  test2_ = test2;
-  if (test2) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_set_allocated:ProtoEvent.test2)
+ const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
+ProtoEvent::uint_field() const {
+  // @@protoc_insertion_point(field_list:ProtoEvent.uint_field)
+  return uint_field_;
+}
+ ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
+ProtoEvent::mutable_uint_field() {
+  // @@protoc_insertion_point(field_mutable_list:ProtoEvent.uint_field)
+  return &uint_field_;
+}
+
+// repeated string string_field = 4;
+int ProtoEvent::string_field_size() const {
+  return string_field_.size();
+}
+void ProtoEvent::clear_string_field() {
+  string_field_.Clear();
+}
+ const ::std::string& ProtoEvent::string_field(int index) const {
+  // @@protoc_insertion_point(field_get:ProtoEvent.string_field)
+  return string_field_.Get(index);
+}
+ ::std::string* ProtoEvent::mutable_string_field(int index) {
+  // @@protoc_insertion_point(field_mutable:ProtoEvent.string_field)
+  return string_field_.Mutable(index);
+}
+ void ProtoEvent::set_string_field(int index, const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:ProtoEvent.string_field)
+  string_field_.Mutable(index)->assign(value);
+}
+ void ProtoEvent::set_string_field(int index, const char* value) {
+  string_field_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:ProtoEvent.string_field)
+}
+ void ProtoEvent::set_string_field(int index, const char* value, size_t size) {
+  string_field_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:ProtoEvent.string_field)
+}
+ ::std::string* ProtoEvent::add_string_field() {
+  // @@protoc_insertion_point(field_add_mutable:ProtoEvent.string_field)
+  return string_field_.Add();
+}
+ void ProtoEvent::add_string_field(const ::std::string& value) {
+  string_field_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:ProtoEvent.string_field)
+}
+ void ProtoEvent::add_string_field(const char* value) {
+  string_field_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:ProtoEvent.string_field)
+}
+ void ProtoEvent::add_string_field(const char* value, size_t size) {
+  string_field_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:ProtoEvent.string_field)
+}
+ const ::google::protobuf::RepeatedPtrField< ::std::string>&
+ProtoEvent::string_field() const {
+  // @@protoc_insertion_point(field_list:ProtoEvent.string_field)
+  return string_field_;
+}
+ ::google::protobuf::RepeatedPtrField< ::std::string>*
+ProtoEvent::mutable_string_field() {
+  // @@protoc_insertion_point(field_mutable_list:ProtoEvent.string_field)
+  return &string_field_;
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

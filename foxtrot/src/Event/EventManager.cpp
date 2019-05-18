@@ -16,21 +16,22 @@ EventManager::~EventManager()
 }
 
 
-inline bool EventManager::produce(Event& event)
+inline bool EventManager::produce(Event event)
 {
     return m_queue.push(event);
 }
 
 
-inline void EventManager::dispatch()
+void EventManager::dispatch()
 {
     m_queue.consume_all(
         [this](Event& event)
         {
             switch(event.type)
             {
-                case Event::Test1:
-                case Event::Test2:
+                case Event::NETWORK_CONNECT:
+                case Event::NETWORK_SUCCESS:
+                case Event::NETWORK_DISCONNECT:
                     m_network_worker->produce(event);
                     break;
                 default:

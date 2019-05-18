@@ -21,7 +21,7 @@ public:
     explicit BaseWorker(EventMediator* mediator);
     virtual ~BaseWorker();
 
-    bool produce(Event& event);
+    bool produce(Event event);
     void process();
 
 protected:
@@ -35,9 +35,9 @@ protected:
 template <class DerivedWorker>
 BaseWorker<DerivedWorker>::BaseWorker(EventMediator* mediator) :
     m_manager(mediator),
-    m_main_thread(
-        std::make_unique<boost::thread>(boost::bind(&BaseWorker<DerivedWorker>::process, this))
-    )
+    m_main_thread(std::make_unique<boost::thread>(
+        boost::bind(&BaseWorker<DerivedWorker>::process, this)
+    ))
 {
 }
 
@@ -49,7 +49,7 @@ BaseWorker<DerivedWorker>::~BaseWorker()
 
 
 template <class DerivedWorker>
-inline bool BaseWorker<DerivedWorker>::produce(Event& event)
+inline bool BaseWorker<DerivedWorker>::produce(Event event)
 {
     return m_queue.push(event);
 }
@@ -61,7 +61,7 @@ inline void BaseWorker<DerivedWorker>::process()
     while(true)
     {
         m_queue.consume_all(
-            [this](Event& event)
+            [this](Event event)
             {
                 LOGGER_CORE_TRACE(event);
                 static_cast<DerivedWorker*>(this)->consume(event);

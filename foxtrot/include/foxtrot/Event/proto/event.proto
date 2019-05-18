@@ -1,21 +1,10 @@
 syntax = "proto3";
 
 message ProtoEvent {
-    enum event_type {
-        TEST_1_EVENT = 0;
-        TEST_2_EVENT = 1;
-    }
 
-    message Test1Event {
-        int32 message = 3;
-    }
+    int32 type = 1;
 
-    message Test2Event {
-        float x = 4;
-        float y = 5;
-    }
-
-    event_type type = 1;
-    Test1Event test1 = 2;
-    Test2Event test2 = 3;
+    repeated int32 int_field = 2;
+    repeated uint32 uint_field = 3;
+    repeated string string_field = 4;
 }

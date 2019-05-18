@@ -18,7 +18,7 @@ public:
     EventManager();
     virtual ~EventManager();
 
-    virtual bool produce(Event& event) override;
+    virtual bool produce(Event event) override;
     void dispatch();
 
     void init_network_worker();

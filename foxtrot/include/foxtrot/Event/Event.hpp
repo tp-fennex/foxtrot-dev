@@ -3,6 +3,7 @@
 
 
 #include <ostream>
+#include <variant>
 
 
 namespace fxt
@@ -10,36 +11,49 @@ namespace fxt
 
 struct Event
 {
-    struct Test1Event
+    struct SizeEvent
     {
-        int message;
+        uint width;
+        uint height;
     };
 
-    struct Test2Event
+    struct KeyEvent
     {
-        float x;
-        float y;
+        int code;
+    };
+
+    struct ConnectionEvent
+    {
+        char address[16];
+        unsigned short port;
     };
 
     enum EventType
     {
-        Test1,
-        Test2,
+        WINDOW_CLOSED,
+        WINDOW_RESIZED,
+        KEY_PRESSED,
+        KEY_RELEASED,
+        NETWORK_CONNECT,
+        NETWORK_SUCCESS,
+        NETWORK_FAILED,
+        NETWORK_DISCONNECT,
     };
 
     EventType type;
 
     union
     {
-        Test1Event test1;
-        Test2Event test2;
+        SizeEvent size;
+        KeyEvent key;
+        ConnectionEvent connection;
     };
 };
 
 
-inline std::ostream& operator<<(std::ostream& os, const Event& e)
+inline std::ostream& operator<<(std::ostream& os, const Event& event)
 {
-    return os << "Event of type:" << e.type;
+    return os << event.type;
 }
 
 } // namespace fxt

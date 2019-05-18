@@ -13,7 +13,7 @@ class EventMediator
 public:
     virtual ~EventMediator() = default;
 
-    virtual bool produce(Event& event) = 0;
+    virtual bool produce(Event event) = 0;
 };
 
 } // namespace fxt
