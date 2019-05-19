@@ -1,0 +1,18 @@
+dist: trusty
+
+language: cpp
+
+os:
+  - linux
+
+compiler:
+  - gcc
+  - clang
+
+install:
+  - source ci/travis/install-$TRAVIS_OS_NAME.sh
+
+script:
+  - mkdir buld
+  - cd build
+  - cmake ..
