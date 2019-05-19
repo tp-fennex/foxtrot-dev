@@ -21,10 +21,27 @@ endif()
 
 
 
+set(ENGINE_PATH "./foxtrot")
+
+
+
+# Google Protocol buffers library
+find_package(Protobuf REQUIRED)
+set(PROTO_FILES ${ENGINE_PATH}/include/foxtrot/Event/proto/event.proto)
+include_directories(${Protobuf_INCLUDE_DIRS})
+message("Generating protocol buffers headers and source files")
+execute_process(
+        COMMAND bash -c "./generate.sh"
+        WORKING_DIRECTORY "../foxtrot/include/foxtrot/Event/proto"
+        OUTPUT_VARIABLE PROTO_GEN_OUT
+)
+message(ProtoPath ${PROTO_GEN_OUT})
+
+
+
 #-------------------------------------------------------------------------------
 # target engine
 #-------------------------------------------------------------------------------
-set(ENGINE_PATH "./foxtrot")
 file(GLOB ENGINE_SOURCE
     "${ENGINE_PATH}/include/foxtrot/*.hpp"
     "${ENGINE_PATH}/src/*.cpp"
@@ -32,14 +49,15 @@ file(GLOB ENGINE_SOURCE
     "${ENGINE_PATH}/include/foxtrot/Event/*.hpp"
     "${ENGINE_PATH}/src/Event/*.cpp"
 
-    "${ENGINE_PATH}/include/foxtrot/Event/proto/*.pb.h"
-    "${ENGINE_PATH}/include/foxtrot/Event/proto/*.pb.cc"
+    # Event proto files
+    "${ENGINE_PATH}/include/foxtrot/Event/proto/*.h"
+    "${ENGINE_PATH}/include/foxtrot/Event/proto/*.cc"
 
     "${ENGINE_PATH}/include/foxtrot/Event/workers/*.hpp"
     "${ENGINE_PATH}/src/Event/workers/*.cpp"
     )
 if(ENGINE_SOURCE)
-	message("-- Found engine at ${ENGINE_PATH}")
+    message("-- Found engine at ${ENGINE_PATH}")
 endif()
 include_directories("${ENGINE_PATH}/include")
 
@@ -69,13 +87,10 @@ include_directories(${SPDLOG_PATH})
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
 
+
+
 find_package(SFML 2.5 REQUIRED COMPONENTS network audio graphics window system)
 include_directories(${SFML_INCLUDE_DIR})
-
-
-
-find_package(Protobuf REQUIRED)
-include_directories(${Protobuf_INCLUDE_DIRS})
 
 
 
@@ -83,7 +98,9 @@ find_package(Boost COMPONENTS thread system REQUIRED)
 include_directories(${Boost_INCLUDE_DIRS})
 
 
+
 add_executable(${EXECUTABLE_NAME} ${ENGINE_SOURCE} ${GAME_SOURCE})
+
 
 
 target_link_libraries(${EXECUTABLE_NAME} ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
