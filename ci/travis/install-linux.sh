@@ -8,7 +8,7 @@ sudo apt install -y protobuf-compiler \
                     libprotoc-dev
 
 # Build and install latest SFML
-sudo apt install -y libfreetype-dev \
+sudo apt install -y libfreetype6-dev \
                     libx11-dev \
                     libxrandr-dev \
                     libudev-dev \
