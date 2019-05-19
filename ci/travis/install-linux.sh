@@ -2,4 +2,4 @@
 
 # Dependency install script
 
-apt install protobuf-compiler libboost-all-dev
+sudo apt install protobuf-compiler libboost-all-dev libsfml-dev
