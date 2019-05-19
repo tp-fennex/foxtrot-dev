@@ -3,6 +3,7 @@
 
 
 #include <memory>
+#include <condition_variable>
 #include <boost/lockfree/queue.hpp>
 
 #include "foxtrot/Event/EventMediator.hpp"
@@ -15,8 +16,7 @@ namespace fxt
 class EventManager : public EventMediator
 {
 public:
-    EventManager();
-    virtual ~EventManager();
+    static EventManager& get_instance();
 
     virtual bool produce(Event event) override;
     void dispatch();
@@ -26,7 +26,15 @@ public:
 
 private:
     boost::lockfree::queue<Event, boost::lockfree::capacity<1024>> m_queue;
+
     std::unique_ptr<NetworkWorker> m_network_worker;
+    std::condition_variable m_network_condition;
+
+private:
+    EventManager();
+    virtual ~EventManager();
+    EventManager(const EventManager&) = delete;
+    EventManager& operator=(const EventManager&) = delete;
 };
 
 } // namespace fxt

@@ -11,11 +11,11 @@
 namespace fxt
 {
 
-NetworkWorker::NetworkWorker(EventMediator* mediator) :
-    BaseWorker(mediator),
+NetworkWorker::NetworkWorker(EventMediator* mediator, std::condition_variable& external_condition) :
+    BaseWorker(mediator, external_condition),
     m_socket(socket(AF_INET, SOCK_STREAM, 0)),
-    m_listen_thread(std::make_unique<boost::thread>(
-        boost::bind(&NetworkWorker::listen, this)
+    m_listen_thread(std::make_unique<std::thread>(
+        std::bind(&NetworkWorker::listen, this)
     ))
 {
 }

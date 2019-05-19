@@ -11,14 +11,16 @@ namespace fxt
 class NetworkWorker : public BaseWorker<NetworkWorker>
 {
 public:
-    explicit NetworkWorker(EventMediator* mediator);
+    WORKER_TYPE(NetworkWorker);
+
+    NetworkWorker(EventMediator* mediator, std::condition_variable& external_condition);
 
     void consume(Event event);
     void listen();
 
 private:
     int m_socket;
-    std::unique_ptr<boost::thread> m_listen_thread;
+    std::unique_ptr<std::thread> m_listen_thread;
 
 private:
     void connect_to(const char* address, unsigned short port);

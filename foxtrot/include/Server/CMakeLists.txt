@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.10)
 project(server)
 
 find_package(Boost COMPONENTS system asio threads)

@@ -1,28 +1,27 @@
 #include "foxtrot/Event/EventManager.hpp"
 #include "foxtrot/Logger.hpp"
 
+#include <iostream>
+
 
 int main()
 {
     fxt::Logger::init();
-    LOGGER_CORE_TRACE("Init logger.");
+    LOGGER_CORE_INFO("Init logger.");
 
-    fxt::EventManager manager;
-    manager.init_network_worker();
-    LOGGER_CORE_TRACE("Init network worker.");
+    fxt::EventManager::get_instance().init_network_worker();
 
     fxt::Event event;
     event.type = fxt::Event::NETWORK_CONNECT;
-    const char* str = "192.168.43.81";
+    const char* str = "127.0.0.1";
     std::copy(str, str+16, event.connection.address);
-
     event.connection.port = 6666;
 
-    manager.produce(event);
+    fxt::EventManager::get_instance().produce(event);
 
     while(true)
     {
-        manager.dispatch();
+        fxt::EventManager::get_instance().dispatch();
     }
     return 0;
 }

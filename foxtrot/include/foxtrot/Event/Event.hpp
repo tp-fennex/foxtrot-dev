@@ -3,7 +3,6 @@
 
 
 #include <ostream>
-#include <variant>
 
 
 namespace fxt
