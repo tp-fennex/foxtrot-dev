@@ -1,7 +1,6 @@
-#include "foxtrot/Event/EventManager.hpp"
 #include "foxtrot/Logger.hpp"
-
-#include <iostream>
+#include "foxtrot/Event/EventManager.hpp"
+#include "foxtrot/Application/Application.hpp"
 
 
 int main()
@@ -19,9 +18,7 @@ int main()
 
     fxt::EventManager::get_instance().produce(event);
 
-    while(true)
-    {
-        fxt::EventManager::get_instance().dispatch();
-    }
+    fxt::Application::get_instance().run();
+
     return 0;
 }

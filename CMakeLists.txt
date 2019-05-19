@@ -55,6 +55,12 @@ file(GLOB ENGINE_SOURCE
 
     "${ENGINE_PATH}/include/foxtrot/Event/workers/*.hpp"
     "${ENGINE_PATH}/src/Event/workers/*.cpp"
+
+    "${ENGINE_PATH}/include/foxtrot/Application/*.hpp"
+    "${ENGINE_PATH}/src/Application/*cpp"
+
+    "${ENGINE_PATH}/include/foxtrot/Window/*.hpp"
+    "${ENGINE_PATH}/src/Window/*cpp"
     )
 if(ENGINE_SOURCE)
     message("-- Found engine at ${ENGINE_PATH}")
@@ -89,7 +95,7 @@ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
 
 
 
-find_package(SFML 2.3 REQUIRED COMPONENTS network audio graphics window system)
+find_package(SFML 2.5 REQUIRED COMPONENTS network audio graphics window system)
 include_directories(${SFML_INCLUDE_DIR})
 
 
