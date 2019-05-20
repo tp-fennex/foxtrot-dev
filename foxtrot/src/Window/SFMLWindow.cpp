@@ -19,6 +19,7 @@ SFMLWindow::SFMLWindow(const WindowProperties& properties) :
         properties.width,
         properties.height
     );
+    m_window.setVerticalSyncEnabled(true);
 }
 
 
@@ -37,6 +38,35 @@ inline void SFMLWindow::draw(const sf::Drawable& drawable)
 inline void SFMLWindow::display()
 {
     m_window.display();
+}
+
+
+inline bool SFMLWindow::poll_event(Event& event)
+{
+    sf::Event sfml_event;
+    m_window.pollEvent(sfml_event);
+
+    switch(sfml_event.type)
+    {
+        case sf::Event::Closed:
+            event.type = Event::WINDOW_CLOSED;
+            return true;
+        case sf::Event::Resized:
+            event.type = Event::WINDOW_RESIZED;
+            event.size.width = sfml_event.size.width;
+            event.size.height = sfml_event.size.height;
+            return true;
+        case sf::Event::KeyPressed:
+            event.type = Event::KEY_PRESSED;
+            event.key.code = sfml_event.key.code;
+            return true;
+        case sf::Event::KeyReleased:
+            event.type = Event::KEY_RELEASED;
+            event.key.code = sfml_event.key.code;
+            return true;
+        default:
+            return false;
+    }
 }
 
 } // namespace fxt

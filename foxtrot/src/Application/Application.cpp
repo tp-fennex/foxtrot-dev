@@ -1,6 +1,7 @@
 #include "foxtrot/Application/Application.hpp"
 #include "foxtrot/Event/EventManager.hpp"
 
+#include <iostream>
 #include <SFML/Graphics.hpp> // needs to be SFML-independent
 
 
@@ -38,6 +39,12 @@ void Application::run()
         m_window->draw(shape);
         m_window->display();
     }
+}
+
+
+inline void Application::stop()
+{
+    m_running = false;
 }
 
 } // namespace fxt

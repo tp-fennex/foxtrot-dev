@@ -6,7 +6,6 @@
 int main()
 {
     fxt::Logger::init();
-    LOGGER_CORE_INFO("Init logger.");
 
     fxt::EventManager::get_instance().init_network_worker();
 
@@ -17,8 +16,12 @@ int main()
     event.connection.port = 6666;
 
     fxt::EventManager::get_instance().produce(event);
+    // fxt::EventManager::get_instance().dispatch();
 
     fxt::Application::get_instance().run();
 
+    fxt::EventManager::get_instance().term_network_worker();
+
+    LOGGER_WARN("Done.");
     return 0;
 }

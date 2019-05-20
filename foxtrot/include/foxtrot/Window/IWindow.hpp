@@ -5,6 +5,8 @@
 #include <string>
 #include <SFML/Graphics.hpp> // needs to be SFML-independent
 
+#include "foxtrot/Event/Event.hpp"
+
 
 namespace fxt
 {
@@ -33,7 +35,7 @@ public:
     virtual void clear() = 0;
     virtual void draw(const sf::Drawable& drawable) = 0; // needs to be SFML-independent
     virtual void display() = 0;
-protected:
+    virtual bool poll_event(Event& event) = 0;
 };
 
 } // namespace fxt

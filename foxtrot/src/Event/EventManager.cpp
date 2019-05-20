@@ -12,7 +12,6 @@ EventManager::EventManager() :
 
 EventManager::~EventManager()
 {
-    term_network_worker();
 }
 
 
@@ -39,15 +38,15 @@ void EventManager::dispatch()
                 case Event::NETWORK_CONNECT:
                 case Event::NETWORK_SUCCESS:
                 case Event::NETWORK_DISCONNECT:
-                    LOGGER_CORE_TRACE("EventManager pushed to {0}: {1}",
-                        m_network_worker->as_string(),
-                        event
+                    LOGGER_CORE_TRACE("EventManager produces {0} to {1};",
+                        event,
+                        m_network_worker->as_string()
                     );
                     m_network_worker->produce(event);
                     m_network_condition.notify_one();
                     break;
                 default:
-                    LOGGER_CORE_WARN("EventManager could not dispatch: {0}",
+                    LOGGER_CORE_WARN("EventManager could not dispatch {0}",
                        event
                     );
                     break;
@@ -65,7 +64,8 @@ void EventManager::init_network_worker()
     }
 
     m_network_worker = std::make_unique<NetworkWorker>(this, m_network_condition);
-    LOGGER_CORE_INFO("Init network worker.");
+
+    LOGGER_CORE_INFO("NetworkWorker initialized.");
 }
 
 
@@ -76,8 +76,13 @@ void EventManager::term_network_worker()
         return;
     }
 
-    m_network_worker.reset(nullptr);
-    LOGGER_CORE_INFO("Term network worker.");
+    Event term_event;
+    term_event.type = Event::WORKER_TERMINATE;
+    m_network_worker->produce(term_event);
+    m_network_condition.notify_one();
+    m_network_worker->terminate();
+
+    LOGGER_CORE_INFO("NetworkWorker terminated.");
 }
 
 } // namespace fxt

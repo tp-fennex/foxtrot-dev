@@ -16,11 +16,14 @@ public:
     NetworkWorker(EventMediator* mediator, std::condition_variable& external_condition);
 
     void consume(Event event);
-    void listen();
+    void recv_event();
+
+    void terminate_recv_event_thread();
 
 private:
     int m_socket;
-    std::unique_ptr<std::thread> m_listen_thread;
+    bool m_receiving;
+    std::unique_ptr<std::thread> m_recv_event_thread;
 
 private:
     void connect_to(const char* address, unsigned short port);

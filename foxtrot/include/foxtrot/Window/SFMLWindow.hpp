@@ -18,6 +18,7 @@ public:
     void clear() override;
     void draw(const sf::Drawable& drawable) override;
     void display() override;
+    bool poll_event(Event& event) override;
 
 private:
     sf::RenderWindow m_window;

@@ -16,6 +16,7 @@ public:
     static Application& get_instance();
 
     void run();
+    void stop();
 
 private:
     bool m_running;

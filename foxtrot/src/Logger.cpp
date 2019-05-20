@@ -16,6 +16,8 @@ void Logger::init()
 
     s_core_logger->set_level(spdlog::level::trace);
     s_client_logger->set_level(spdlog::level::trace);
+
+    LOGGER_CORE_INFO("Logger initialized.");
 }
 
 
