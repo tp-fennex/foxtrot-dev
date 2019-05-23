@@ -1,5 +1,5 @@
-#include "foxtrot/Window/SFMLWindow.hpp"
-#include "foxtrot/Logger.hpp"
+#include <foxtrot/Window/SFMLWindow.hpp>
+#include <foxtrot/Logger.hpp>
 
 
 namespace fxt

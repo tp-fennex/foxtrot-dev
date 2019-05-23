@@ -1,4 +1,4 @@
-#include "foxtrot/Event/EventManager.hpp"
+#include <foxtrot/Event/EventManager.hpp>
 
 
 namespace fxt

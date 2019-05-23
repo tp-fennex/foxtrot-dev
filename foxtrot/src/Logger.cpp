@@ -1,5 +1,5 @@
-#include "foxtrot/Logger.hpp"
-#include "spdlog/sinks/stdout_color_sinks.h"
+#include <foxtrot/Logger.hpp>
+#include <spdlog/sinks/stdout_color_sinks.h>
 
 
 namespace fxt

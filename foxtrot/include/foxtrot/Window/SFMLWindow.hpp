@@ -4,7 +4,7 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "foxtrot/Window/IWindow.hpp"
+#include <foxtrot/Window/IWindow.hpp>
 
 
 namespace fxt

@@ -2,7 +2,7 @@
 #define FOXTROT_NETWORK_WORKER_HPP
 
 
-#include "foxtrot/Event/workers/BaseWorker.hpp"
+#include <foxtrot/Event/workers/BaseWorker.hpp>
 
 
 namespace fxt

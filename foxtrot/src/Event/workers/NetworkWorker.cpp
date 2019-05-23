@@ -3,9 +3,9 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 
-#include "foxtrot/Event/EventMediator.hpp"
-#include "foxtrot/Event/workers/NetworkWorker.hpp"
-#include "foxtrot/Event/proto/event.pb.h"
+#include <foxtrot/Event/workers/NetworkWorker.hpp>
+#include <foxtrot/Event/EventMediator.hpp>
+#include <foxtrot/Event/proto/event.pb.h>
 
 
 namespace fxt

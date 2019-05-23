@@ -7,9 +7,9 @@
 #include <condition_variable>
 #include <boost/lockfree/spsc_queue.hpp>
 
-#include "foxtrot/Event/Event.hpp"
-#include "foxtrot/Event/EventMediator.hpp"
-#include "foxtrot/Logger.hpp"
+#include <foxtrot/Event/Event.hpp>
+#include <foxtrot/Event/EventMediator.hpp>
+#include <foxtrot/Logger.hpp>
 
 
 namespace fxt

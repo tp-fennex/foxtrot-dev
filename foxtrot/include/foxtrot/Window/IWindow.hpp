@@ -5,7 +5,7 @@
 #include <string>
 #include <SFML/Graphics.hpp> // needs to be SFML-independent
 
-#include "foxtrot/Event/Event.hpp"
+#include <foxtrot/Event/Event.hpp>
 
 
 namespace fxt

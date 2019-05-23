@@ -1,8 +1,7 @@
-#include "foxtrot/Application/Application.hpp"
-#include "foxtrot/Event/EventManager.hpp"
-
-#include <iostream>
 #include <SFML/Graphics.hpp> // needs to be SFML-independent
+
+#include <foxtrot/Application/Application.hpp>
+#include <foxtrot/Event/EventManager.hpp>
 
 
 namespace fxt

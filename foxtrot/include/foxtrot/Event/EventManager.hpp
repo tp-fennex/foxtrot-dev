@@ -6,8 +6,8 @@
 #include <condition_variable>
 #include <boost/lockfree/queue.hpp>
 
-#include "foxtrot/Event/EventMediator.hpp"
-#include "foxtrot/Event/workers/NetworkWorker.hpp"
+#include <foxtrot/Event/EventMediator.hpp>
+#include <foxtrot/Event/workers/NetworkWorker.hpp>
 
 
 namespace fxt

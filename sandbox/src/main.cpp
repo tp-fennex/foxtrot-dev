@@ -14,9 +14,7 @@ int main()
     const char* str = "127.0.0.1";
     std::copy(str, str+16, event.connection.address);
     event.connection.port = 6666;
-
     fxt::EventManager::get_instance().produce(event);
-    // fxt::EventManager::get_instance().dispatch();
 
     fxt::Application::get_instance().run();
 

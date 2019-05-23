@@ -4,7 +4,7 @@
 
 #include <memory>
 
-#include "foxtrot/Window/IWindow.hpp"
+#include <foxtrot/Window/IWindow.hpp>
 
 
 namespace fxt
