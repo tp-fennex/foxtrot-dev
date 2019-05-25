@@ -10,10 +10,14 @@ void Session::start_session() {
 
 }
 
-
-//void Session::add_client(Client &client) {
-////    m_clients.emplace(//move semantics for client);
-//}
+/*!
+ * \brief Adding client to the session
+ * @param client - client to add to the session
+ * Maybe better to implement move semantics here
+ */
+void Session::add_client(Client &client) {
+    m_clients.insert(client);
+}
 
 
 bool Session::ready() {

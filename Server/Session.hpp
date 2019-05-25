@@ -23,7 +23,7 @@ private:
     size_t m_session_capacity;
 
 private:
-//    void add_client(Client &client);
+    void add_client(Client &client);
 
     bool ready();
 

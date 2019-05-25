@@ -12,7 +12,6 @@
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/random_generator.hpp>
 
-
 namespace fxt
 {
 
@@ -25,7 +24,7 @@ public:
 
     void run();
 
-//    boost::uuids::uuid create_session(size_t session_capacity);
+    boost::uuids::uuid create_session(size_t session_capacity);
 
 private:
     boost::mutex m_mutex;   /*! \brief lock work queue */
@@ -43,6 +42,8 @@ private:
     Server();
 
     void do_accept();
+
+
 
 };
 
