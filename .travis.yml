@@ -13,6 +13,7 @@ install:
   - source ci/travis/install-$TRAVIS_OS_NAME.sh
 
 script:
+  - echo "Starting build in `pwd`"
   - mkdir build
   - cd build
   - cmake ..
