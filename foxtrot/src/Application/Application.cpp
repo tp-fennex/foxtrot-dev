@@ -12,11 +12,6 @@ Application::Application() :
 }
 
 
-Application::~Application()
-{
-}
-
-
 Application& Application::get_instance()
 {
     static Application s_instance;
