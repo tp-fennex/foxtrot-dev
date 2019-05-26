@@ -11,24 +11,6 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - g++-7
-      - libfreetype6-dev
-      - libx11-dev
-      - libxrandr-dev
-      - libudev-dev
-      - libglu1-mesa-dev
-      - freeglut3-dev
-      - mesa-common-dev
-      - libflac-dev
-      - libogg-dev
-      - libvorbis-dev
-      - libvorbisenc2
-      - libvorbisfile3
-      - libopenal-dev
-      - libpthread-stubs0-dev
-#      - protobuf-compiler
-#      - libboost-all-dev
-#      - libprotobuf-dev
-#      - libprotoc-dev
 
 before_install:
   - export CC=gcc-7
