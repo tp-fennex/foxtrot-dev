@@ -1,19 +1,25 @@
 #ifndef SERVER_HPP
 #define SERVER_HPP
 
-#include "Session.hpp"
+
+#include <foxtrot/Session/Session.hpp>
 
 #include <map>
 #include <vector>
 
 #include <boost/asio.hpp>
 #include <boost/bind.hpp>
+
 #include <boost/thread/mutex.hpp>
+
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/random_generator.hpp>
 
+
 namespace fxt
 {
+
+using boost::asio::ip::tcp;
 
 class Server
 {
@@ -42,8 +48,6 @@ private:
     Server();
 
     void do_accept();
-
-
 
 };
 

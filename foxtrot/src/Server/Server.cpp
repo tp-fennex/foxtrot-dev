@@ -1,9 +1,10 @@
-#include "Server.hpp"
+#include <foxtrot/Server/Server.hpp>
 
-#include "Client.hpp"
+#include <foxtrot/Client/Client.hpp>
 
 #include <iostream>
 #include <boost/make_shared.hpp>
+
 
 namespace fxt
 {

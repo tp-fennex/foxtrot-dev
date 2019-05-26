@@ -8,22 +8,22 @@
 #include <boost/asio.hpp>
 #include <boost/enable_shared_from_this.hpp>
 
+
 namespace fxt
 {
 
 using boost::asio::ip::tcp;
 
-
 class Client : public boost::enable_shared_from_this<Client>, boost::asio::noncopyable
 {
 public:
 
-    explicit Client(tcp::socket socket) : m_socket(std::move(socket)), m_buffer{0}
+    explicit Client(tcp::socket socket) :  m_buffer{0}, m_socket(std::move(socket))
     {
         std::cout << "Client constructed with ip: " << m_socket.remote_endpoint().address().to_string() << "\n";
-    };
+    }
 
-    explicit Client(Client &&client) : m_socket(std::move(client.m_socket)), m_buffer{0} {};
+    Client(Client &&client) noexcept :  m_buffer{0}, m_socket(std::move(client.m_socket)) {}
 
     ~Client() = default;
 

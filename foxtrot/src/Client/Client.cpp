@@ -1,8 +1,10 @@
-#include "Client.hpp"
-#include "Server.hpp"
+#include <foxtrot/Client/Client.hpp>
+#include <foxtrot/Server/Server.hpp>
+
+#include <boost/asio.hpp>
 
 #include <iostream>
-#include <boost/asio.hpp>
+
 
 namespace fxt
 {
