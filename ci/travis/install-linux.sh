@@ -29,5 +29,6 @@ sudo make install
 cd ../../..
 
 cd foxtrot/include/foxtrot/Event/proto
+chmod a+x generate.sh
 ./generate.sh
 cd ../../../../..
