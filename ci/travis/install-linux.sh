@@ -26,3 +26,4 @@ cd foxtrot/vendor/sfml
 cmake .
 make
 sudo make install
+cd ../../..
