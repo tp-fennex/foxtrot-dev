@@ -135,8 +135,6 @@ if(GAME_SOURCE)
     message("-- Found sandbox at ${GAME_PATH}")
 endif()
 
-
-
 add_executable(${EXECUTABLE_NAME} ${ENGINE_SOURCE} ${GAME_SOURCE})
 
 target_link_libraries(${EXECUTABLE_NAME} ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
@@ -148,7 +146,6 @@ target_link_libraries(${EXECUTABLE_NAME} ${Boost_LIBRARIES})
 file(GLOB GAME_SERVER_SOURCE
     "${GAME_PATH}/server/*.cpp"
 )
-
 
 add_executable(${EXECUTABLE_NAME_SERVER} ${ENGINE_SERVER_SOURCE} ${GAME_SERVER_SOURCE})
 

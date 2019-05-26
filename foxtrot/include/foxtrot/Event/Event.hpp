@@ -29,7 +29,8 @@ struct Event
 
     enum EventType
     {
-        WINDOW_CLOSED,
+        NONE = -1,
+        WINDOW_CLOSED = 0,
         WINDOW_RESIZED,
         KEY_PRESSED,
         KEY_RELEASED,
@@ -37,6 +38,7 @@ struct Event
         NETWORK_SUCCESS,
         NETWORK_FAILED,
         NETWORK_DISCONNECT,
+        WORKER_TERMINATE,
     };
 
     EventType type;
@@ -52,7 +54,7 @@ struct Event
 
 inline std::ostream& operator<<(std::ostream& os, const Event& event)
 {
-    return os << event.type;
+    return os << "Event (" << event.type << ')';
 }
 
 } // namespace fxt

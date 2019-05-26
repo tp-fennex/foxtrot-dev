@@ -2,7 +2,7 @@
 #define FOXTROT_EVENT_MEDIATOR_HPP
 
 
-#include "foxtrot/Event/Event.hpp"
+#include <foxtrot/Event/Event.hpp>
 
 
 namespace fxt
