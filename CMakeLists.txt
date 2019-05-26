@@ -108,10 +108,19 @@ set(GAME_PATH "./sandbox")
 file(GLOB GAME_SOURCE
     "${GAME_PATH}/include/*.hpp"
     "${GAME_PATH}/src/*.cpp"
+
+    "${GAME_PATH}/include/components/*.hpp"
+
+    "${GAME_PATH}/include/core/*.hpp"
+    "${GAME_PATH}/src/core/*.cpp"
+
+    "${GAME_PATH}/include/systems/*.hpp"
+    "${GAME_PATH}/src/systems/*.cpp"
 )
 if(GAME_SOURCE)
     message("-- Found sandbox at ${GAME_PATH}")
 endif()
+include_directories("${GAME_PATH}/include")
 
 
 

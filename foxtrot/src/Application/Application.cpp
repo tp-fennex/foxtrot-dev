@@ -1,5 +1,3 @@
-#include <SFML/Graphics.hpp> // needs to be SFML-independent
-
 #include <foxtrot/Application/Application.hpp>
 #include <foxtrot/Event/EventManager.hpp>
 
@@ -14,11 +12,6 @@ Application::Application() :
 }
 
 
-Application::~Application()
-{
-}
-
-
 Application& Application::get_instance()
 {
     static Application s_instance;
@@ -28,14 +21,20 @@ Application& Application::get_instance()
 
 void Application::run()
 {
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
-
     while(m_running)
     {
-        fxt::EventManager::get_instance().dispatch();
         m_window->clear();
-        m_window->draw(shape);
+
+        Event event;
+        if(m_window->poll_event(event))
+        {
+            m_layer_chain.update_layers(event);
+        }
+
+        fxt::EventManager::get_instance().dispatch();
+
+        m_layer_chain.render_layers(*m_window);
+
         m_window->display();
     }
 }

@@ -3,8 +3,9 @@
 
 
 #include <memory>
-
+#include <entt/entity/registry.hpp>
 #include <foxtrot/Window/IWindow.hpp>
+#include <foxtrot/Application/LayerChain.hpp>
 
 
 namespace fxt
@@ -20,11 +21,13 @@ public:
 
 private:
     bool m_running;
+    entt::registry m_registry;
     std::unique_ptr<IWindow> m_window;
+    LayerChain m_layer_chain;
 
 private:
     Application();
-    ~Application();
+    ~Application() = default;
     Application(const Application&) = delete;
     Application& operator=(const Application&) = delete;
 };

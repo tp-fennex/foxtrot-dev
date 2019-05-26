@@ -1,0 +1,6 @@
+#ifndef COMPONENT_PLAYER_HPP
+#define COMPONENT_PLAYER_HPP
+
+struct Player {};
+
+#endif // COMPONENT_PLAYER_HPP
