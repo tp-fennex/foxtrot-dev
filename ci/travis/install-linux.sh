@@ -27,3 +27,7 @@ cmake .
 make
 sudo make install
 cd ../../..
+
+cd foxtrot/include/foxtrot/Event/proto
+./generate.sh
+cd ../../../../..
