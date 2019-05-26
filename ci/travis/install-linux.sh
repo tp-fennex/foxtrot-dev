@@ -21,7 +21,8 @@ sudo apt install -y libfreetype6-dev \
                     libvorbisenc2 \
                     libvorbisfile3 \
                     libopenal-dev \
-                    libpthread-stubs0-dev
+                    libpthread-stubs0-dev \
+                    lib
 cd foxtrot/vendor/sfml
 cmake .
 make
@@ -34,6 +35,16 @@ sudo apt install -y autoconf \
                     curl \
                     make \
                     unzip
+
+
+wget https://dl.bintray.com/boostorg/release/1.70.0/source/boost_1_70_0.tar.gz
+tar -xvf boost_1_70_0.tar.gz
+cd boost_1_70_0/tools/build
+chmod a+x bootstrap.sh
+./bootstrap.sh
+chmod a+x b2
+sudo ./b2 install
+cd ../../..
 
 git clone https://github.com/protocolbuffers/protobuf.git
 cd protobuf
