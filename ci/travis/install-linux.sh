@@ -2,6 +2,7 @@
 
 # Dependency install script
 sudo apt update
+sudo apt upgrade
 sudo apt install -y protobuf-compiler \
                     libboost-all-dev \
                     libprotobuf-dev \
