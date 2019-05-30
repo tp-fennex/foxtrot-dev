@@ -1,8 +1,10 @@
-#include "Client.hpp"
-#include "Server.hpp"
+#include <foxtrot/Client/Client.hpp>
+#include <foxtrot/Server/Server.hpp>
+
+#include <boost/asio.hpp>
 
 #include <iostream>
-#include <boost/asio.hpp>
+
 
 namespace fxt
 {
@@ -16,12 +18,14 @@ void Client::do_connect()
     async_read(
         m_socket,
         boost::asio::buffer(m_buffer, max_msg_len),
-        boost::asio::transfer_at_least(1), //FOR TEST PURPOSE
+        boost::asio::transfer_at_least(1), //TODO: FOR TEST PURPOSE, CHANGE ME PLZ
         [this, self](const boost::system::error_code ec, std::size_t)
         {
             if (!ec)
             {
                 std::cout << m_buffer << "\n";
+
+                Server::get_instance().create_session(10);
             }
             else
             {

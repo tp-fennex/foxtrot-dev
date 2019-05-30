@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.5.1)
 project(foxtrot CXX)
 set(EXECUTABLE_NAME "foxtrot")
+set(EXECUTABLE_NAME_SERVER "foxtrot_server")
 
 
 
@@ -53,6 +54,28 @@ include_directories("${ENGINE_PATH}/include")
 
 
 #-------------------------------------------------------------------------------
+# target engine server
+#-------------------------------------------------------------------------------
+file(GLOB ENGINE_SERVER_SOURCE
+        "${ENGINE_PATH}/include/foxtrot/Server/*.hpp"
+        "${ENGINE_PATH}/src/Server/*.cpp"
+
+        "${ENGINE_PATH}/include/foxtrot/Client/*.hpp"
+        "${ENGINE_PATH}/src/Client/*.cpp"
+
+        "${ENGINE_PATH}/include/foxtrot/Session/*.hpp"
+        "${ENGINE_PATH}/src/Session/*.cpp"
+
+        "${ENGINE_PATH}/include/foxtrot/Event/Event.hpp"
+        "${ENGINE_PATH}/src/Event/Event.cpp"
+
+        "${ENGINE_PATH}/include/foxtrot/Event/proto/*.h"
+        "${ENGINE_PATH}/include/foxtrot/Event/proto/*.cc"
+        )
+
+
+
+#-------------------------------------------------------------------------------
 # target google protobuf
 #-------------------------------------------------------------------------------
 find_package(Protobuf REQUIRED)
@@ -71,7 +94,7 @@ message(ProtoPath ${PROTO_GEN_OUT})
 #-------------------------------------------------------------------------------
 # target boost
 #-------------------------------------------------------------------------------
-find_package(Boost COMPONENTS thread system REQUIRED)
+find_package(Boost COMPONENTS asio system)
 include_directories(${Boost_INCLUDE_DIRS})
 
 
@@ -106,6 +129,8 @@ include_directories(${ENTT_PATH})
 #-------------------------------------------------------------------------------
 set(GAME_PATH "./sandbox")
 file(GLOB GAME_SOURCE
+    "${GAME_PATH}/client/*.cpp"
+
     "${GAME_PATH}/include/*.hpp"
     "${GAME_PATH}/src/*.cpp"
 
@@ -122,11 +147,19 @@ if(GAME_SOURCE)
 endif()
 include_directories("${GAME_PATH}/include")
 
-
-
 add_executable(${EXECUTABLE_NAME} ${ENGINE_SOURCE} ${GAME_SOURCE})
 
 target_link_libraries(${EXECUTABLE_NAME} ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
 target_link_libraries(${EXECUTABLE_NAME} ${Protobuf_LIBRARIES})
 target_link_libraries(${EXECUTABLE_NAME} ${Boost_LIBRARIES})
-target_link_libraries(${EXECUTABLE_NAME} boost_thread)
+
+
+
+file(GLOB GAME_SERVER_SOURCE
+    "${GAME_PATH}/server/*.cpp"
+)
+
+add_executable(${EXECUTABLE_NAME_SERVER} ${ENGINE_SERVER_SOURCE} ${GAME_SERVER_SOURCE})
+
+target_link_libraries(${EXECUTABLE_NAME_SERVER} ${Protobuf_LIBRARIES})
+target_link_libraries(${EXECUTABLE_NAME_SERVER} ${Boost_LIBRARIES})

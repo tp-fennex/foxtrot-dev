@@ -4,16 +4,17 @@
 
 #include <set>
 
-#include "Client.hpp"
+#include <foxtrot/Client/Client.hpp>
 
 
-namespace fxt {
+namespace fxt
+{
 
-
-class Session {
+class Session
+{
 public:
     explicit Session(size_t _session_capacity) :
-            m_session_capacity(_session_capacity) {}
+            m_session_capacity(_session_capacity) {};
 
     ~Session() = default;
 
@@ -23,7 +24,7 @@ private:
     size_t m_session_capacity;
 
 private:
-//    void add_client(Client &client);
+    void add_client(Client &&client);
 
     bool ready();
 
