@@ -57,6 +57,9 @@ include_directories("${ENGINE_PATH}/include")
 # target engine server
 #-------------------------------------------------------------------------------
 file(GLOB ENGINE_SERVER_SOURCE
+        "${ENGINE_PATH}/include/foxtrot/*.hpp"
+        "${ENGINE_PATH}/src/*.cpp"
+
         "${ENGINE_PATH}/include/foxtrot/Server/*.hpp"
         "${ENGINE_PATH}/src/Server/*.cpp"
 
@@ -66,11 +69,14 @@ file(GLOB ENGINE_SERVER_SOURCE
         "${ENGINE_PATH}/include/foxtrot/Session/*.hpp"
         "${ENGINE_PATH}/src/Session/*.cpp"
 
+        "${ENGINE_PATH}/include/foxtrot/WorkerPool/*.hpp"
+        "${ENGINE_PATH}/src/WorkerPool/*.cpp"
+
         "${ENGINE_PATH}/include/foxtrot/Event/Event.hpp"
         "${ENGINE_PATH}/src/Event/Event.cpp"
 
-        "${ENGINE_PATH}/include/foxtrot/Event/proto/*.h"
-        "${ENGINE_PATH}/include/foxtrot/Event/proto/*.cc"
+        "${ENGINE_PATH}/include/foxtrot/Event/proto/*.pb.h"
+        "${ENGINE_PATH}/include/foxtrot/Event/proto/*.pb.cc"
         )
 
 

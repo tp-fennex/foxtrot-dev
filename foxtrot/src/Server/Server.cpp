@@ -29,6 +29,7 @@ Server &Server::get_instance()
 
 void Server::run()
 {
+    m_worker_pool.start();
     m_io_context.run();
 }
 
@@ -41,7 +42,7 @@ void Server::do_accept()
                 if (!ec)
                 {
                     std::cout << "Connection accepted" << "\n";
-                    boost::make_shared<Client>(std::move(socket))->do_connect();
+                    boost::make_shared<Client>(std::move(socket))->do_read_header();
                 }
 
                 do_accept();

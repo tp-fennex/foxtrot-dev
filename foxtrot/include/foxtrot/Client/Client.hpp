@@ -8,6 +8,10 @@
 #include <boost/asio.hpp>
 #include <boost/enable_shared_from_this.hpp>
 
+#include <foxtrot/Event/proto/header.pb.h>
+#include <foxtrot/Event/proto/event.pb.h>
+#include <foxtrot/Logger.hpp>
+
 
 namespace fxt
 {
@@ -17,7 +21,6 @@ using boost::asio::ip::tcp;
 class Client : public boost::enable_shared_from_this<Client>, boost::asio::noncopyable
 {
 public:
-
     explicit Client(tcp::socket socket) :  m_buffer{0}, m_socket(std::move(socket))
     {
         std::cout << "Client constructed with ip: " << m_socket.remote_endpoint().address().to_string() << "\n";
@@ -32,18 +35,26 @@ public:
         return &m_socket < &r_client.m_socket;
     }
 
-    void do_connect();
+    void process_events();
+
+    // Read packet size
+    void do_read_header();
+
+    void do_read_packet(uint32_t packet_size);
 
 private:
 
     enum
     {
-        max_msg_len = 1024
+        max_msg_len = 1024,
     };
 
     char m_buffer[max_msg_len];
 
     tcp::socket m_socket;
+
+    PacketHeader m_packet_header;
+    ProtoEvent m_event;
 
 };
 

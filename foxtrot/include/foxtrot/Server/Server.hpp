@@ -6,6 +6,7 @@
 
 #include <map>
 #include <vector>
+#include <iostream>
 
 #include <boost/asio.hpp>
 #include <boost/bind.hpp>
@@ -14,6 +15,8 @@
 
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/random_generator.hpp>
+
+#include <foxtrot/WorkerPool/WorkerPool.hpp>
 
 
 namespace fxt
@@ -24,7 +27,7 @@ using boost::asio::ip::tcp;
 class Server
 {
 public:
-    ~Server() = default;
+    ~Server() = default; //TODO
 
     static Server &get_instance();
 
@@ -33,7 +36,6 @@ public:
     boost::uuids::uuid create_session(size_t session_capacity);
 
 private:
-    boost::mutex m_mutex;   /*! \brief lock work queue */
 
     boost::asio::io_context m_io_context;
 
@@ -43,6 +45,8 @@ private:
     boost::uuids::random_generator m_uuid_gen;    /*! \brief session key */
 
     std::map<boost::uuids::uuid, Session> m_sessions;
+
+    WorkerPool m_worker_pool;
 
 private:
     Server();

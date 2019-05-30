@@ -1,0 +1,5 @@
+syntax = "proto3";
+
+message PacketHeader {
+   uint32 packet_size = 1;
+}
